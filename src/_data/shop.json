@@ -1,0 +1,16 @@
+{
+  "enabled": false,
+  "intro": "Ready-made outfits from Karan Boutique. Message us on WhatsApp to order or to come and try one on.",
+  "offerLine": "[Free alteration on every ready-made outfit]",
+  "products": [
+    {
+      "id": "example-cotton-suit",
+      "name": "Example: printed cotton suit",
+      "price": null,
+      "sizes": ["S", "M", "L", "XL"],
+      "photo": "",
+      "detail": "3-piece suit with dupatta",
+      "inStock": true
+    }
+  ]
+}

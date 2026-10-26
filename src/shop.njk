@@ -1,0 +1,38 @@
+---
+layout: base.njk
+title: "Shop | Karan Boutique"
+description: "Ready-made outfits from Karan Boutique. Order on WhatsApp."
+---
+{%- from "icons.njk" import garment, icon -%}
+{#- This page is only built when "enabled" is true in src/_data/shop.json. -#}
+<header class="shop-head">
+  <div class="wrap">
+    <p><a href="/">Karan Boutique</a></p>
+  </div>
+</header>
+
+<main class="band">
+  <div class="wrap">
+    <h2>Ready-made outfits</h2>
+    <p class="intro">{{ shop.intro }} {% ph shop.offerLine %}</p>
+    <ul class="products">
+      {%- for product in shop.products %}
+      {%- if product.inStock %}
+      <li class="product tile">
+        {%- if product.photo %}
+        <img src="{{ product.photo }}" alt="{{ product.name }}" sizes="(min-width: 40rem) 33vw, 50vw">
+        {%- else %}
+        <div class="tile__empty">{{ garment("suits") }}<mark class="todo">Photo needed</mark></div>
+        {%- endif %}
+        <h2>{{ product.name }}</h2>
+        <p class="muted">{{ product.detail }}</p>
+        <p><strong>{% price product.price %}</strong> <span class="muted">Sizes {{ product.sizes | join(", ") }}</span></p>
+        <a class="btn btn--wa" href="{% waUrl business.whatsapp, 'Hi Karan Boutique, I would like to order: ' + product.name %}" target="_blank" rel="noopener">{{ icon("chat") }}<span>Order on WhatsApp</span></a>
+      </li>
+      {%- endif %}
+      {%- endfor %}
+    </ul>
+  </div>
+</main>
+
+{% include "footer.njk" %}

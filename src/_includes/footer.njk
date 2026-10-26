@@ -1,0 +1,14 @@
+{%- from "icons.njk" import icon -%}
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <p class="foot__name">Karan Boutique</p>
+    <p>{% ph business.streetAddress %}, {% ph business.area %}, {% ph business.city %} {% ph business.pincode %}</p>
+    <p>{% ph business.phoneDisplay %}</p>
+    {%- if business.instagram | isReal %}
+    <p><a href="{{ business.instagram }}" target="_blank" rel="noopener">{{ icon("instagram") }}<span>Instagram</span></a></p>
+    {%- endif %}
+    <p class="muted">© {{ env.year }} Karan Boutique</p>
+  </div>
+</footer>
+
+<a class="fab" href="{% waUrl business.whatsapp, business.whatsappGreeting %}" target="_blank" rel="noopener" aria-label="Chat with Karan Boutique on WhatsApp">{{ icon("chat") }}<span>WhatsApp</span></a>

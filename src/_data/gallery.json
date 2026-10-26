@@ -1,0 +1,19 @@
+{
+  "categories": [
+    { "id": "blouses", "name": "Blouses" },
+    { "id": "suits", "name": "Suits" },
+    { "id": "lehengas", "name": "Lehengas" },
+    { "id": "kids", "name": "Kids" },
+    { "id": "alterations", "name": "Alterations" }
+  ],
+  "photos": [
+    { "src": "", "category": "blouses", "caption": "Designer blouse", "alt": "" },
+    { "src": "", "category": "suits", "caption": "Patiala salwar suit", "alt": "" },
+    { "src": "", "category": "lehengas", "caption": "Bridal lehenga", "alt": "" },
+    { "src": "", "category": "blouses", "caption": "Back-neck design", "alt": "" },
+    { "src": "", "category": "kids", "caption": "Party frock", "alt": "" },
+    { "src": "", "category": "suits", "caption": "Anarkali", "alt": "" },
+    { "src": "", "category": "alterations", "caption": "Before and after fitting", "alt": "" },
+    { "src": "", "category": "lehengas", "caption": "Sharara set", "alt": "" }
+  ]
+}

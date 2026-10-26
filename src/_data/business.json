@@ -1,0 +1,36 @@
+{
+  "name": "Karan Boutique",
+  "description": "Ladies' tailoring and stitching boutique. Bring your fabric and we stitch blouses, suits, lehengas, kids' wear and alterations to your measurements.",
+
+  "area": "[Your area]",
+  "city": "[City]",
+  "state": "[State]",
+  "pincode": "[PIN code]",
+  "streetAddress": "[Shop number, street name]",
+  "landmark": "[Near a landmark people know]",
+
+  "phoneDisplay": "[Phone number]",
+  "phone": "",
+  "whatsapp": "",
+  "whatsappGreeting": "Hi Karan Boutique, I want to get an outfit stitched.",
+  "email": "",
+
+  "hours": [
+    { "days": "[Monday to Saturday]", "time": "[10 am to 8 pm]" },
+    { "days": "[Sunday]", "time": "[Closed]" }
+  ],
+  "schemaHours": [],
+
+  "homeService": "[Home measurement and pickup: yes or no, and up to how many km]",
+  "payment": "[Cash and UPI (Google Pay, PhonePe, Paytm)]",
+  "urgentOrders": "[Yes, for an extra charge. Message us to check the date.]",
+  "usualDays": "[7]",
+  "bridalWeeks": "[3 to 4]",
+
+  "mapsUrl": "",
+  "mapEmbedUrl": "",
+  "reviewsUrl": "",
+  "writeReviewUrl": "",
+  "instagram": "",
+  "facebook": ""
+}

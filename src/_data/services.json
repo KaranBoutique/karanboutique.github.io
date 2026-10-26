@@ -1,0 +1,40 @@
+{
+  "note": "Prices are for stitching only. You bring the fabric. Lining, padding, piping, latkans and handwork are charged extra.",
+  "groups": [
+    {
+      "name": "Ladies' stitching",
+      "items": [
+        { "name": "Simple blouse", "detail": "With or without lining", "price": null, "days": null },
+        { "name": "Designer blouse", "detail": "Padded, princess cut or back-neck design", "price": null, "days": null },
+        { "name": "Salwar suit", "detail": "Kameez with salwar, Patiala or pants", "price": null, "days": null },
+        { "name": "Kurti", "detail": "Straight, A-line or with side slits", "price": null, "days": null },
+        { "name": "Anarkali or gown", "detail": "Floor length, with lining", "price": null, "days": null },
+        { "name": "Salwar, palazzo or pants", "detail": "Bottom only", "price": null, "days": null },
+        { "name": "Saree fall and pico", "detail": "Fall stitched on, edges finished", "price": null, "days": null }
+      ]
+    },
+    {
+      "name": "Bridal and occasion wear",
+      "items": [
+        { "name": "Lehenga", "detail": "Can-can, lining and waist fitting", "price": null, "days": null },
+        { "name": "Lehenga blouse (choli)", "detail": "Padded, with tie-ups or hooks", "price": null, "days": null },
+        { "name": "Sharara or gharara set", "detail": "Kurti with flared bottoms", "price": null, "days": null }
+      ]
+    },
+    {
+      "name": "Kids",
+      "items": [
+        { "name": "Frock", "detail": "Party or everyday", "price": null, "days": null },
+        { "name": "Kids' suit or lehenga", "detail": "Sized for growing room", "price": null, "days": null }
+      ]
+    },
+    {
+      "name": "Alterations",
+      "items": [
+        { "name": "Fitting", "detail": "Take in or let out", "price": null, "days": null },
+        { "name": "Length change", "detail": "Shorten or lengthen", "price": null, "days": null },
+        { "name": "Zip, hooks or buttons", "detail": "Replace or repair", "price": null, "days": null }
+      ]
+    }
+  ]
+}

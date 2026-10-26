@@ -1,0 +1,247 @@
+---
+layout: base.njk
+schema: true
+eleventyComputed:
+  title: "Karan Boutique | Ladies' tailor in {{ business.area }}, {{ business.city }}"
+  description: "Blouse, suit, lehenga and kids' stitching and alterations in {{ business.area }}, {{ business.city }}. Bring your fabric, see our prices and message us on WhatsApp."
+---
+{%- from "icons.njk" import garment, icon, linkbtn -%}
+<p class="todo-banner" id="todo-banner" hidden>
+  <span class="wrap">This is a preview. The <mark class="todo">highlighted</mark> details are placeholders until Karan Boutique sends the real ones (<span data-count>0</span> left).</span>
+</p>
+
+<header class="hero">
+  <div class="wrap hero__inner">
+    <h1 class="hero__name">Karan Boutique</h1>
+    <p class="hero__lede">Ladies' tailoring in {% ph business.area %}, {% ph business.city %}. Bring your fabric and we stitch it to your measurements: blouses, suits, lehengas, kids' wear and alterations.</p>
+    <div class="actions" data-hero-cta>
+      <a class="btn btn--wa" href="{% waUrl business.whatsapp, business.whatsappGreeting %}" target="_blank" rel="noopener">{{ icon("chat") }}<span>WhatsApp us</span></a>
+      <a class="btn btn--line" href="{% telUrl business.phone %}">{{ icon("phone") }}<span>Call {% ph business.phoneDisplay %}</span></a>
+    </div>
+    <ul class="facts">
+      <li>{{ icon("pin") }}<span>{% ph business.streetAddress %}, {% ph business.area %}</span></li>
+      <li>{{ icon("clock") }}<span>{% ph business.hours[0].days %}, {% ph business.hours[0].time %}</span></li>
+    </ul>
+  </div>
+  <div class="tape" aria-hidden="true">
+    <div class="tape__strip">{% for inch in range(1, 61) %}<span>{{ inch }}</span>{% endfor %}</div>
+  </div>
+</header>
+
+<nav class="jump" aria-label="On this page">
+  <div class="wrap jump__inner">
+    <a href="#prices">Prices</a>
+    <a href="#work">Our work</a>
+    <a href="#how">How it works</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#questions">Questions</a>
+    <a href="#visit">Visit us</a>
+    {%- if shop.enabled %}
+    <a href="/shop/">Shop</a>
+    {%- endif %}
+  </div>
+</nav>
+
+<main>
+  <section class="band band--panel" id="prices" aria-labelledby="prices-title">
+    <div class="wrap">
+      <h2 id="prices-title">Stitching prices</h2>
+      <p class="intro">Starting prices. We confirm the final price when we see your fabric and design.</p>
+      <div class="ratecard">
+        {%- for group in services.groups %}
+        <div class="ratecard__group">
+          <h3>{{ group.name }}</h3>
+          <ul>
+            {%- for item in group.items %}
+            <li class="rate">
+              <span class="rate__name">{{ item.name }}</span>
+              <span class="rate__leader" aria-hidden="true"></span>
+              <span class="rate__price">from {% price item.price %}</span>
+              <span class="rate__detail">{{ item.detail }}</span>
+              <span class="rate__days">{% days item.days %}</span>
+            </li>
+            {%- endfor %}
+          </ul>
+        </div>
+        {%- endfor %}
+      </div>
+      <p class="fineprint">{{ services.note }}</p>
+    </div>
+  </section>
+
+  <section class="band" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <h2 id="work-title">Our work</h2>
+      <p class="intro">Outfits stitched at Karan Boutique. Show us any of these, or a photo of your own, and we can make it for you.</p>
+      <div class="chips" role="group" aria-label="Show work by type">
+        <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+        {%- for cat in gallery.categories %}
+        <button type="button" class="chip" data-filter="{{ cat.id }}" aria-pressed="false">{{ cat.name }}</button>
+        {%- endfor %}
+      </div>
+      <ul class="gallery">
+        {%- for photo in gallery.photos %}
+        <li class="tile" data-cat="{{ photo.category }}">
+          <figure>
+            {%- if photo.src %}
+            <img src="{{ photo.src }}" alt="{{ photo.alt or photo.caption }}" sizes="(min-width: 64rem) 16rem, (min-width: 40rem) 33vw, 50vw">
+            {%- else %}
+            <div class="tile__empty">{{ garment(photo.category) }}<mark class="todo">Photo needed</mark></div>
+            {%- endif %}
+            <figcaption>{{ photo.caption }}</figcaption>
+          </figure>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <section class="band band--panel" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <h2 id="how-title">How it works</h2>
+      <ol class="steps">
+        <li>
+          <h3>Bring your fabric</h3>
+          <p>Bring the fabric and any lace or trims you have chosen. A photo of the design, or an outfit that fits you well, helps us get it right.</p>
+        </li>
+        <li>
+          <h3>Measurement and design</h3>
+          <p>We take your measurements and agree the design, price and ready date with you. We keep your measurements for next time.</p>
+        </li>
+        <li>
+          <h3>Trial</h3>
+          <p>Try the outfit on and we adjust the fit until it sits right.</p>
+        </li>
+        <li>
+          <h3>Collect</h3>
+          <p>We message you on WhatsApp when it is ready to collect on the agreed date.</p>
+        </li>
+      </ol>
+      <p class="aside">{% ph business.homeService %}</p>
+    </div>
+  </section>
+
+  <section class="band" id="reviews" aria-labelledby="reviews-title">
+    <div class="wrap">
+      <h2 id="reviews-title">What customers say</h2>
+      {%- if reviews.length %}
+      <ul class="reviews">
+        {%- for review in reviews %}
+        <li class="review">
+          <p class="review__stars" aria-label="{{ review.stars }} out of 5 stars">{% for s in range(0, review.stars) %}{{ icon("star") }}{% endfor %}</p>
+          <blockquote>{{ review.text }}</blockquote>
+          <p class="review__by">{{ review.name }}</p>
+        </li>
+        {%- endfor %}
+      </ul>
+      {%- else %}
+      <div class="reviews-empty">
+        <p><mark class="todo">Your three best Google reviews go here, with each customer's first name.</mark></p>
+      </div>
+      {%- endif %}
+      <div class="actions">
+        {{ linkbtn(business.reviewsUrl, "Read our reviews on Google") }}
+        {{ linkbtn(business.writeReviewUrl, "Write a review", "star") }}
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--panel" id="questions" aria-labelledby="questions-title">
+    <div class="wrap">
+      <h2 id="questions-title">Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How long does stitching take?</summary>
+          <p>Most blouses and suits are ready in about {% ph business.usualDays %} days. Bridal and lehenga orders need {% ph business.bridalWeeks %} weeks, so book early in the wedding season.</p>
+        </details>
+        <details>
+          <summary>Can you stitch an urgent order?</summary>
+          <p>{% ph business.urgentOrders %}</p>
+        </details>
+        <details>
+          <summary>What should I bring?</summary>
+          <p>Your fabric, any lining, lace or trims you have chosen, and a photo of the design you like. If you have an outfit that fits you well, bring it so we can match the fit.</p>
+        </details>
+        <details>
+          <summary>Can you copy a design from a photo?</summary>
+          <p>Yes. Show us the photo when you visit, or send it to us on WhatsApp first and we will tell you the price.</p>
+        </details>
+        <details>
+          <summary>Do you come for measurement or pickup?</summary>
+          <p>{% ph business.homeService %}</p>
+        </details>
+        <details>
+          <summary>How can I pay?</summary>
+          <p>{% ph business.payment %}</p>
+        </details>
+        <details>
+          <summary>Do you sell ready-made clothes?</summary>
+          <p>Not yet. Ready-made outfits are coming soon. Follow us on Instagram to see them first.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="visit" aria-labelledby="visit-title">
+    <div class="wrap visit">
+      <div class="visit__where">
+        <h2 id="visit-title">Visit us</h2>
+        <address>
+          <strong>Karan Boutique</strong><br>
+          {% ph business.streetAddress %}<br>
+          {% ph business.area %}, {% ph business.city %}, {% ph business.state %} {% ph business.pincode %}<br>
+          <span class="muted">{% ph business.landmark %}</span>
+        </address>
+        <dl class="hours">
+          {%- for row in business.hours %}
+          <div><dt>{% ph row.days %}</dt><dd>{% ph row.time %}</dd></div>
+          {%- endfor %}
+        </dl>
+        <p class="contact-line">{{ icon("phone") }}<span>{% ph business.phoneDisplay %}</span></p>
+        <div class="actions">
+          {{ linkbtn(business.mapsUrl, "Get directions", "pin") }}
+          <a class="btn btn--line" href="{% telUrl business.phone %}">{{ icon("phone") }}<span>Call</span></a>
+        </div>
+        {%- if business.mapEmbedUrl | isReal and not env.preview %}
+        <iframe class="map" src="{{ business.mapEmbedUrl }}" title="Map to Karan Boutique" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        {%- endif %}
+      </div>
+
+      <div class="visit__book">
+        <h2 id="book-title">Book a visit</h2>
+        <p class="intro">Fill this in and we will open WhatsApp with your message ready to send.</p>
+        <form class="book" id="book" data-wa="{{ business.whatsapp }}" data-shop="{{ business.name }}" aria-labelledby="book-title">
+          <label for="book-name">Your name</label>
+          <input id="book-name" name="name" type="text" autocomplete="name" required>
+          <label for="book-service">What do you want stitched?</label>
+          <select id="book-service" name="service" required>
+            <option value="">Choose one</option>
+            {%- for group in services.groups %}
+            <optgroup label="{{ group.name }}">
+              {%- for item in group.items %}
+              <option>{{ item.name }}</option>
+              {%- endfor %}
+            </optgroup>
+            {%- endfor %}
+            <option>Something else</option>
+          </select>
+          <label for="book-date">Day you want to visit <span class="muted">(optional)</span></label>
+          <input id="book-date" name="date" type="date">
+          <label for="book-note">Anything else <span class="muted">(optional)</span></label>
+          <textarea id="book-note" name="note" rows="3" placeholder="For example: wedding on 12 December, need it a week before"></textarea>
+          <button class="btn btn--wa" type="submit">{{ icon("chat") }}<span>Write my WhatsApp message</span></button>
+        </form>
+        <div class="book-result" id="book-result" hidden>
+          <p class="book-result__label">Your message</p>
+          <p class="book-result__msg" data-msg></p>
+          <div class="actions">
+            <a class="btn btn--wa" data-send href="#" target="_blank" rel="noopener">{{ icon("chat") }}<span>Send on WhatsApp</span></a>
+            <button class="btn btn--line" type="button" data-copy>Copy message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% include "footer.njk" %}

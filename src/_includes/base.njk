@@ -1,0 +1,51 @@
+{%- set fonts = "https://fonts.googleapis.com/css2?family=Anek+Latin:wdth,wght@75..125,300..700&family=Rozha+One&display=swap" -%}
+{%- if env.preview -%}
+<title>Karan Boutique Website</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="{{ fonts }}">
+<style>
+{% include "site.css" %}
+</style>
+{{ content | safe }}
+<script>
+{% include "site.js" %}
+</script>
+{%- else -%}
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+{%- if site.url | isReal %}
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+{%- endif %}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta name="theme-color" content="{{ site.themeColor }}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="{{ fonts }}">
+<style>
+{% include "site.css" %}
+</style>
+{%- if schema %}
+<script type="application/ld+json">
+{% localBusinessSchema business, services, site %}
+</script>
+{%- endif %}
+</head>
+<body>
+{{ content | safe }}
+<script>
+{% include "site.js" %}
+</script>
+</body>
+</html>
+{%- endif %}
