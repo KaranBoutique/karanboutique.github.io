@@ -208,6 +208,9 @@ eleventyComputed:
         <div class="actions">
           {{ linkbtn(business.mapsUrl, "Get directions", "pin") }}
           <a class="btn btn--line" href="{% telUrl business.phone %}">{{ icon("phone") }}<span>Call</span></a>
+          {%- if business.facebook | isReal %}
+          {{ linkbtn(business.facebook, "Facebook", "facebook") }}
+          {%- endif %}
         </div>
         {%- if business.mapEmbedUrl | isReal and not env.preview %}
         <iframe class="map" src="{{ business.mapEmbedUrl }}" title="Map to Karan Boutique" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

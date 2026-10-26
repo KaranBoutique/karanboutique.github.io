@@ -7,6 +7,9 @@
     {%- if business.instagram | isReal %}
     <p><a href="{{ business.instagram }}" target="_blank" rel="noopener">{{ icon("instagram") }}<span>Instagram</span></a></p>
     {%- endif %}
+    {%- if business.facebook | isReal %}
+    <p><a href="{{ business.facebook }}" target="_blank" rel="noopener">{{ icon("facebook") }}<span>Facebook</span></a></p>
+    {%- endif %}
     <p class="muted">© {{ env.year }} Karan Boutique</p>
   </div>
 </footer>
