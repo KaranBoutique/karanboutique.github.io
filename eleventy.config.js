@@ -1,3 +1,4 @@
+import { HtmlBasePlugin } from "@11ty/eleventy";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 
 // A value still written as "[Something]" (or left empty) is a placeholder
@@ -63,6 +64,10 @@ export default function (eleventyConfig) {
     });
   }
 
+  // Until the custom domain is connected, GitHub Pages serves the site from a
+  // sub-folder; PATH_PREFIX (set by the deploy workflow) keeps links working there.
+  eleventyConfig.addPlugin(HtmlBasePlugin);
+
   eleventyConfig.addPassthroughCopy({ "src/static": "/" });
   eleventyConfig.addWatchTarget("src/_includes/");
 
@@ -100,6 +105,7 @@ export default function (eleventyConfig) {
 
   return {
     dir: { input: "src", output: preview ? "_preview" : "_site" },
+    pathPrefix: process.env.PATH_PREFIX || "/",
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
   };

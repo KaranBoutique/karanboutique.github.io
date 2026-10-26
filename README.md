@@ -41,3 +41,9 @@ Put photos in `src/photos/` and point to them from `gallery.json`, for example `
 2. Set `"enabled": true`.
 
 This publishes `/shop/` with an "Order on WhatsApp" button per product and adds Shop to the menu. Online payments (for example Razorpay) and delivery can be added on top when the shop grows.
+
+## Publishing
+
+The site is hosted free on GitHub Pages. Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes it. In the repository's Settings → Pages, Source must be set to "GitHub Actions".
+
+To connect the domain: add the domain under Settings → Pages → Custom domain, add a `src/static/CNAME` file containing the domain, set `url` in `src/_data/site.json`, and point the domain's DNS at GitHub Pages (four A records to 185.199.108.153, 185.199.109.153, 185.199.110.153 and 185.199.111.153, plus a `www` CNAME to `karandeep2980-commits.github.io`). Then tick "Enforce HTTPS".
