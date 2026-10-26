@@ -1,29 +1,33 @@
 {
   "name": "Karan Boutique",
-  "description": "Ladies' tailoring and stitching boutique. Bring your fabric and we stitch blouses, suits, lehengas, kids' wear and alterations to your measurements.",
+  "description": "Ladies' tailoring boutique in Tehsilpura, Amritsar. Bring your fabric and we stitch Patiala, Anarkali, Sharara, Gharara, straight-cut and palazzo suits to your measurements, and do alterations.",
 
-  "area": "[Your area]",
-  "city": "[City]",
-  "state": "[State]",
-  "pincode": "[PIN code]",
-  "streetAddress": "[Shop number, street name]",
+  "area": "Tehsilpura",
+  "city": "Amritsar",
+  "state": "Punjab",
+  "pincode": "[143001 or 143006?]",
+  "streetAddress": "House 36",
   "landmark": "[Near a landmark people know]",
 
-  "phoneDisplay": "[Phone number]",
-  "phone": "",
-  "whatsapp": "",
-  "whatsappGreeting": "Hi Karan Boutique, I want to get an outfit stitched.",
+  "phoneDisplay": "+91 98142 14047",
+  "phone": "+919814214047",
+  "whatsapp": "919814214047",
+  "whatsappGreeting": "Hi Karan Boutique, I want to get a suit stitched.",
   "email": "",
 
   "hours": [
-    { "days": "[Monday to Saturday]", "time": "[10 am to 8 pm]" },
-    { "days": "[Sunday]", "time": "[Closed]" }
+    { "days": "Monday to Saturday", "time": "9 am to 7 pm" },
+    { "days": "Sunday", "time": "Closed" }
   ],
-  "schemaHours": [],
+  "schemaHours": ["Mo-Sa 09:00-19:00"],
+
+  "googleRating": 4.3,
+  "googleReviewCount": 6,
 
   "homeService": "[Home measurement and pickup: yes or no, and up to how many km]",
   "payment": "[Cash and UPI (Google Pay, PhonePe, Paytm)]",
   "urgentOrders": "[Yes, for an extra charge. Message us to check the date.]",
+  "otherOutfits": "[Tell us if you also stitch blouses, lehengas or kids' clothes]",
   "usualDays": "[7]",
   "bridalWeeks": "[3 to 4]",
 

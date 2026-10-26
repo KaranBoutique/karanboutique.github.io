@@ -3,7 +3,7 @@ layout: base.njk
 schema: true
 eleventyComputed:
   title: "Karan Boutique | Ladies' tailor in {{ business.area }}, {{ business.city }}"
-  description: "Blouse, suit, lehenga and kids' stitching and alterations in {{ business.area }}, {{ business.city }}. Bring your fabric, see our prices and message us on WhatsApp."
+  description: "Patiala, Anarkali, Sharara, Gharara and palazzo suit stitching and alterations in {{ business.area }}, {{ business.city }}. Bring your fabric, see our prices and message us on WhatsApp."
 ---
 {%- from "icons.njk" import garment, icon, linkbtn -%}
 <p class="todo-banner" id="todo-banner" hidden>
@@ -13,7 +13,7 @@ eleventyComputed:
 <header class="hero">
   <div class="wrap hero__inner">
     <h1 class="hero__name">Karan Boutique</h1>
-    <p class="hero__lede">Ladies' tailoring in {% ph business.area %}, {% ph business.city %}. Bring your fabric and we stitch it to your measurements: blouses, suits, lehengas, kids' wear and alterations.</p>
+    <p class="hero__lede">Punjabi suits stitched to your measurements in {% ph business.area %}, {% ph business.city %}. Patiala, Anarkali, Sharara, Gharara, straight-cut and palazzo suits, and alterations. Bring your fabric and we do the rest.</p>
     <div class="actions" data-hero-cta>
       <a class="btn btn--wa" href="{% waUrl business.whatsapp, business.whatsappGreeting %}" target="_blank" rel="noopener">{{ icon("chat") }}<span>WhatsApp us</span></a>
       <a class="btn btn--line" href="{% telUrl business.phone %}">{{ icon("phone") }}<span>Call {% ph business.phoneDisplay %}</span></a>
@@ -86,7 +86,7 @@ eleventyComputed:
             {%- if photo.src %}
             <img src="{{ photo.src }}" alt="{{ photo.alt or photo.caption }}" sizes="(min-width: 64rem) 16rem, (min-width: 40rem) 33vw, 50vw">
             {%- else %}
-            <div class="tile__empty">{{ garment(photo.category) }}<mark class="todo">Photo needed</mark></div>
+            <div class="tile__empty">{{ garment(photo.icon or photo.category) }}<mark class="todo">Photo needed</mark></div>
             {%- endif %}
             <figcaption>{{ photo.caption }}</figcaption>
           </figure>
@@ -124,6 +124,9 @@ eleventyComputed:
   <section class="band" id="reviews" aria-labelledby="reviews-title">
     <div class="wrap">
       <h2 id="reviews-title">What customers say</h2>
+      {%- if business.googleRating %}
+      <p class="rating"><span class="rating__score">{{ business.googleRating }}</span><span class="rating__stars" aria-hidden="true">{% for s in range(0, 5) %}<span class="rating__star{% if loop.index0 < business.googleRating | round(0, "floor") %} is-on{% endif %}">{{ icon("star") }}</span>{% endfor %}</span><span class="muted">out of 5 from {{ business.googleReviewCount }} Google reviews</span></p>
+      {%- endif %}
       {%- if reviews.length %}
       <ul class="reviews">
         {%- for review in reviews %}
@@ -152,7 +155,7 @@ eleventyComputed:
       <div class="faq">
         <details>
           <summary>How long does stitching take?</summary>
-          <p>Most blouses and suits are ready in about {% ph business.usualDays %} days. Bridal and lehenga orders need {% ph business.bridalWeeks %} weeks, so book early in the wedding season.</p>
+          <p>Most suits are ready in about {% ph business.usualDays %} days. Wedding and heavy work orders need {% ph business.bridalWeeks %} weeks, so book early in the wedding season.</p>
         </details>
         <details>
           <summary>Can you stitch an urgent order?</summary>
@@ -169,6 +172,10 @@ eleventyComputed:
         <details>
           <summary>Do you come for measurement or pickup?</summary>
           <p>{% ph business.homeService %}</p>
+        </details>
+        <details>
+          <summary>Do you stitch blouses, lehengas or kids' clothes?</summary>
+          <p>{% ph business.otherOutfits %}</p>
         </details>
         <details>
           <summary>How can I pay?</summary>

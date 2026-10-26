@@ -389,6 +389,11 @@ mark.todo {
 .steps p { color: var(--ink-soft); max-width: 32rem; }
 
 /* Reviews */
+.rating { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.75rem; margin-top: 1rem; }
+.rating__score { font-family: var(--display); font-size: 2.6rem; line-height: 1; }
+.rating__stars { display: flex; gap: 0.1rem; color: var(--line-strong); }
+.rating__star .icon { width: 1.35rem; height: 1.35rem; fill: currentColor; stroke: none; }
+.rating__star.is-on { color: var(--haldi); }
 .reviews { list-style: none; margin: 0 0 1.5rem; padding: 0; display: grid; gap: 1rem; }
 .review { border-top: 2px solid var(--ink); padding-top: 0.9rem; }
 .review__stars { color: var(--haldi); display: flex; gap: 0.15rem; }

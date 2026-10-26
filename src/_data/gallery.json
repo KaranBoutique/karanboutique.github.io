@@ -1,19 +1,20 @@
 {
   "categories": [
-    { "id": "blouses", "name": "Blouses" },
-    { "id": "suits", "name": "Suits" },
-    { "id": "lehengas", "name": "Lehengas" },
-    { "id": "kids", "name": "Kids" },
+    { "id": "patiala", "name": "Patiala" },
+    { "id": "anarkali", "name": "Anarkali" },
+    { "id": "sharara", "name": "Sharara and Gharara" },
+    { "id": "straight", "name": "Straight cut" },
+    { "id": "palazzo", "name": "Palazzo" },
     { "id": "alterations", "name": "Alterations" }
   ],
   "photos": [
-    { "src": "", "category": "blouses", "caption": "Designer blouse", "alt": "" },
-    { "src": "", "category": "suits", "caption": "Patiala salwar suit", "alt": "" },
-    { "src": "", "category": "lehengas", "caption": "Bridal lehenga", "alt": "" },
-    { "src": "", "category": "blouses", "caption": "Back-neck design", "alt": "" },
-    { "src": "", "category": "kids", "caption": "Party frock", "alt": "" },
-    { "src": "", "category": "suits", "caption": "Anarkali", "alt": "" },
-    { "src": "", "category": "alterations", "caption": "Before and after fitting", "alt": "" },
-    { "src": "", "category": "lehengas", "caption": "Sharara set", "alt": "" }
+    { "src": "", "category": "patiala", "icon": "suits", "caption": "Patiala suit", "alt": "" },
+    { "src": "", "category": "anarkali", "icon": "anarkali", "caption": "Floor-length Anarkali", "alt": "" },
+    { "src": "", "category": "sharara", "icon": "sharara", "caption": "Sharara suit", "alt": "" },
+    { "src": "", "category": "straight", "icon": "suits", "caption": "Straight-cut suit", "alt": "" },
+    { "src": "", "category": "palazzo", "icon": "palazzo", "caption": "Palazzo suit", "alt": "" },
+    { "src": "", "category": "sharara", "icon": "sharara", "caption": "Gharara suit", "alt": "" },
+    { "src": "", "category": "anarkali", "icon": "anarkali", "caption": "Party Anarkali", "alt": "" },
+    { "src": "", "category": "alterations", "icon": "alterations", "caption": "Before and after fitting", "alt": "" }
   ]
 }
