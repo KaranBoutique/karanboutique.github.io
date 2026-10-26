@@ -5,9 +5,9 @@
   "area": "Tehsilpura",
   "city": "Amritsar",
   "state": "Punjab",
-  "pincode": "[143001 or 143006?]",
+  "pincode": "143006",
   "streetAddress": "House 36",
-  "landmark": "[Near a landmark people know]",
+  "landmark": "Near Pani Wali Tanki",
 
   "phoneDisplay": "+91 98142 14047",
   "phone": "+919814214047",
@@ -24,7 +24,7 @@
   "googleRating": 4.3,
   "googleReviewCount": 6,
 
-  "homeService": "[Home measurement and pickup: yes or no, and up to how many km]",
+  "homeService": "We don't do home measurement. Once we have your measurements, we can pick up your fabric and send back your finished suit by Uber parcel. You pay the delivery cost.",
   "payment": "[Cash and UPI (Google Pay, PhonePe, Paytm)]",
   "urgentOrders": "[Yes, for an extra charge. Message us to check the date.]",
   "otherOutfits": "[Tell us if you also stitch blouses, lehengas or kids' clothes]",
