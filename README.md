@@ -44,6 +44,6 @@ This publishes `/shop/` with an "Order on WhatsApp" button per product and adds 
 
 ## Publishing
 
-The site is hosted free on GitHub Pages. Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes it. In the repository's Settings → Pages, Source must be set to "GitHub Actions".
+The site is hosted free on GitHub Pages at https://karanboutique.github.io, from the `KaranBoutique/karanboutique.github.io` repository. Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes it. In the repository's Settings → Pages, Source must be set to "GitHub Actions".
 
-To connect the domain: add the domain under Settings → Pages → Custom domain, add a `src/static/CNAME` file containing the domain, set `url` in `src/_data/site.json`, and point the domain's DNS at GitHub Pages (four A records to 185.199.108.153, 185.199.109.153, 185.199.110.153 and 185.199.111.153, plus a `www` CNAME to `karandeep2980-commits.github.io`). Then tick "Enforce HTTPS".
+If a custom domain is ever bought: add it under Settings → Pages → Custom domain, add a `src/static/CNAME` file containing the domain, change `url` in `src/_data/site.json`, and point the domain's DNS at GitHub Pages.
