@@ -1,4 +1,4 @@
-{%- set fonts = "https://fonts.googleapis.com/css2?family=Anek+Latin:wdth,wght@75..125,300..700&family=Rozha+One&display=swap" -%}
+{%- set fonts = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Italiana&family=Mulish:wght@400;500;600&display=swap" -%}
 {%- if env.preview -%}
 <title>Karan Boutique Website</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -27,8 +27,12 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description }}">
+{%- if site.url | isReal %}
+<meta property="og:image" content="{{ site.url }}/og-image.png">
+{%- endif %}
 <meta name="theme-color" content="{{ site.themeColor }}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{{ fonts }}">

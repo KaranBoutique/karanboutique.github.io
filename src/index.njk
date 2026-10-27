@@ -5,33 +5,33 @@ eleventyComputed:
   title: "Karan Boutique | Ladies' tailor in {{ business.area }}, {{ business.city }}"
   description: "Patiala, Anarkali, Sharara, Gharara and palazzo suit stitching and alterations in {{ business.area }}, {{ business.city }}. Bring your fabric, see our prices and message us on WhatsApp."
 ---
-{%- from "icons.njk" import garment, icon, linkbtn -%}
+{%- from "icons.njk" import garment, icon, linkbtn, emblem, kInitial -%}
 <p class="todo-banner" id="todo-banner" hidden>
   <span class="wrap">This is a preview. The <mark class="todo">highlighted</mark> details are placeholders until Karan Boutique sends the real ones (<span data-count>0</span> left).</span>
 </p>
 
 <header class="hero">
-  <div class="wrap hero__inner">
-    <h1 class="hero__name">Karan Boutique</h1>
-    <p class="hero__lede">Punjabi suits stitched to your measurements in {% ph business.area %}, {% ph business.city %}. Patiala, Anarkali, Sharara, Gharara, straight-cut and palazzo suits, and alterations. Bring your fabric and we do the rest.</p>
-    <div class="actions" data-hero-cta>
-      <a class="btn btn--wa" href="{% waUrl business.whatsapp, business.whatsappGreeting %}" target="_blank" rel="noopener">{{ icon("chat") }}<span>WhatsApp us</span></a>
-      <a class="btn btn--line" href="{% telUrl business.phone %}">{{ icon("phone") }}<span>Call {% ph business.phoneDisplay %}</span></a>
+  <div class="hero__card">
+    <div class="hero__inner">
+      {{ emblem() }}
+      <h1 class="hero__name"><span class="sr-only">K</span>{{ kInitial() }}aran Boutique</h1>
+      <p class="hero__lede">Punjabi suits stitched to your measurements in {% ph business.area %}, {% ph business.city %}. Patiala, Anarkali, Sharara, Gharara, straight-cut and palazzo suits, and alterations. Bring your fabric and we do the rest.</p>
+      <div class="actions actions--center" data-hero-cta>
+        <a class="btn btn--wa" href="{% waUrl business.whatsapp, business.whatsappGreeting %}" target="_blank" rel="noopener">{{ icon("chat") }}<span>WhatsApp us</span></a>
+        <a class="btn btn--line" href="{% telUrl business.phone %}">{{ icon("phone") }}<span>Call {% ph business.phoneDisplay %}</span></a>
+      </div>
+      <ul class="facts">
+        <li>{{ icon("pin") }}<span>{% ph business.streetAddress %}, {% ph business.area %}</span></li>
+        <li>{{ icon("clock") }}<span>{% ph business.hours[0].days %}, {% ph business.hours[0].time %}</span></li>
+      </ul>
     </div>
-    <ul class="facts">
-      <li>{{ icon("pin") }}<span>{% ph business.streetAddress %}, {% ph business.area %}</span></li>
-      <li>{{ icon("clock") }}<span>{% ph business.hours[0].days %}, {% ph business.hours[0].time %}</span></li>
-    </ul>
-  </div>
-  <div class="tape" aria-hidden="true">
-    <div class="tape__strip">{% for inch in range(1, 61) %}<span>{{ inch }}</span>{% endfor %}</div>
   </div>
 </header>
 
 <nav class="jump" aria-label="On this page">
   <div class="wrap jump__inner">
-    <a href="#prices">Prices</a>
     <a href="#work">Styles</a>
+    <a href="#prices">Prices</a>
     <a href="#how">How it works</a>
     <a href="#reviews">Reviews</a>
     <a href="#questions">Questions</a>
@@ -43,6 +43,35 @@ eleventyComputed:
 </nav>
 
 <main>
+  <section class="band" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <h2 id="work-title">Styles we stitch</h2>
+      <p class="intro">Example photos of the styles we make. Show us any of these, or a photo of your own, and we will stitch it in your fabric to your measurements. Photos of our own work are coming soon.</p>
+      <div class="chips" role="group" aria-label="Show styles by type">
+        <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+        {%- for cat in gallery.categories %}
+        <button type="button" class="chip" data-filter="{{ cat.id }}" aria-pressed="false">{{ cat.name }}</button>
+        {%- endfor %}
+      </div>
+      <ul class="gallery">
+        {%- for photo in gallery.photos %}
+        <li class="tile" data-cat="{{ photo.category }}">
+          <figure>
+            <div class="tile__frame">
+            {%- if photo.src %}
+            <img src="{{ photo.src }}" alt="{{ photo.alt or photo.caption }}" sizes="(min-width: 64rem) 16rem, (min-width: 40rem) 33vw, 50vw">
+            {%- else %}
+            <div class="tile__empty">{{ garment(photo.icon or photo.category) }}<mark class="todo">Photo needed</mark></div>
+            {%- endif %}
+            </div>
+            <figcaption>{{ photo.caption }}{% if photo.credit %}<small class="credit">Example photo: {% if photo.creditUrl %}<a href="{{ photo.creditUrl }}" target="_blank" rel="noopener">{{ photo.credit }}</a>{% else %}{{ photo.credit }}{% endif %}, Unsplash</small>{% endif %}</figcaption>
+          </figure>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </section>
+
   <section class="band band--panel" id="prices" aria-labelledby="prices-title">
     <div class="wrap">
       <h2 id="prices-title">Stitching prices</h2>
@@ -69,34 +98,7 @@ eleventyComputed:
     </div>
   </section>
 
-  <section class="band" id="work" aria-labelledby="work-title">
-    <div class="wrap">
-      <h2 id="work-title">Styles we stitch</h2>
-      <p class="intro">Example photos of the styles we make. Show us any of these, or a photo of your own, and we will stitch it in your fabric to your measurements. Photos of our own work are coming soon.</p>
-      <div class="chips" role="group" aria-label="Show styles by type">
-        <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
-        {%- for cat in gallery.categories %}
-        <button type="button" class="chip" data-filter="{{ cat.id }}" aria-pressed="false">{{ cat.name }}</button>
-        {%- endfor %}
-      </div>
-      <ul class="gallery">
-        {%- for photo in gallery.photos %}
-        <li class="tile" data-cat="{{ photo.category }}">
-          <figure>
-            {%- if photo.src %}
-            <img src="{{ photo.src }}" alt="{{ photo.alt or photo.caption }}" sizes="(min-width: 64rem) 16rem, (min-width: 40rem) 33vw, 50vw">
-            {%- else %}
-            <div class="tile__empty">{{ garment(photo.icon or photo.category) }}<mark class="todo">Photo needed</mark></div>
-            {%- endif %}
-            <figcaption>{{ photo.caption }}{% if photo.credit %}<small class="credit">Example photo: {% if photo.creditUrl %}<a href="{{ photo.creditUrl }}" target="_blank" rel="noopener">{{ photo.credit }}</a>{% else %}{{ photo.credit }}{% endif %}, Unsplash</small>{% endif %}</figcaption>
-          </figure>
-        </li>
-        {%- endfor %}
-      </ul>
-    </div>
-  </section>
-
-  <section class="band band--panel" id="how" aria-labelledby="how-title">
+  <section class="band" id="how" aria-labelledby="how-title">
     <div class="wrap">
       <h2 id="how-title">How it works</h2>
       <ol class="steps">
@@ -121,7 +123,7 @@ eleventyComputed:
     </div>
   </section>
 
-  <section class="band" id="reviews" aria-labelledby="reviews-title">
+  <section class="band band--panel" id="reviews" aria-labelledby="reviews-title">
     <div class="wrap">
       <h2 id="reviews-title">What customers say</h2>
       {%- if business.googleRating %}
@@ -149,7 +151,7 @@ eleventyComputed:
     </div>
   </section>
 
-  <section class="band band--panel" id="questions" aria-labelledby="questions-title">
+  <section class="band" id="questions" aria-labelledby="questions-title">
     <div class="wrap">
       <h2 id="questions-title">Questions</h2>
       <div class="faq">
@@ -189,7 +191,7 @@ eleventyComputed:
     </div>
   </section>
 
-  <section class="band" id="visit" aria-labelledby="visit-title">
+  <section class="band band--panel" id="visit" aria-labelledby="visit-title">
     <div class="wrap visit">
       <div class="visit__where">
         <h2 id="visit-title">Visit us</h2>

@@ -1,3 +1,8 @@
+{# The Karan Boutique emblem: a lady in a flared anarkali with a flowing dupatta. #}
+{% macro emblem() -%}
+<svg class="emblem" viewBox="24 12 152 172" aria-hidden="true" focusable="false"><circle cx="100" cy="29" r="11" fill="currentColor"/><path d="M90,45 Q100,42 110,45 C113,46 115,49 114,53 C111,64 108,74 106,84 L94,84 C92,74 89,64 86,53 C85,49 87,46 90,45 Z" fill="currentColor"/><path d="M94,88 L106,88 C112,110 126,134 156,166 C140,174 120,177 100,177 C80,177 60,174 44,166 C74,134 88,110 94,88 Z M98.6,96 L101.4,96 L103,170 L97,170 Z M93.5,97 L95,98 L83,170 L77,169 Z M105,98 L106.5,97 L123,169 L117,170 Z" fill="currentColor" fill-rule="evenodd"/><path d="M88,48 C76,52 66,64 60,82 C54,100 46,116 30,128 C40,114 46,100 50,84 C55,66 68,52 88,48 Z" fill="currentColor"/></svg>
+{%- endmacro %}
+
 {# Line drawings of garments, used for gallery tiles that are still waiting for a photo. #}
 {% macro garment(kind) -%}
 <svg class="garment" viewBox="0 0 48 48" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round">
@@ -53,6 +58,11 @@
   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
 {%- endif %}
 </svg>
+{%- endmacro %}
+
+{# The lady K monogram that stands in for the first letter of the shop name. #}
+{% macro kInitial() -%}
+<svg class="k-initial" viewBox="43 18 118 161" aria-hidden="true" focusable="false"><circle cx="64" cy="30" r="11" fill="currentColor"/><path d="M57,46 Q64,43 71,46 C73,47 74,50 73,54 C71,66 70,78 70,92 C71,120 76,148 84,174 C72,178 56,178 44,174 C52,148 57,120 58,92 C58,78 57,66 55,54 C54,50 55,47 57,46 Z" fill="currentColor"/><path d="M76,98 C98,84 122,60 156,22 C142,54 116,88 82,111 Z" fill="currentColor"/><path d="M85,104 L93,97 C112,124 134,152 160,174 L145,177 C126,152 106,128 85,104 Z" fill="currentColor"/></svg>
 {%- endmacro %}
 
 {# A button that links to another site, or a marked placeholder until the link is added. #}
