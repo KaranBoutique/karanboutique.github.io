@@ -1,38 +1,38 @@
-/* Look: a Punjabi wedding card. Deep bridal wine, old gold hairlines, ivory and blush.
-   One memorable thing: the hero, framed by a double gold rule with a phulkari ornament.
-   Everything after it stays quiet: hairlines, whitespace, a fashion serif for headings. */
+/* Look: "Petal". Light and airy: ivory with a petal-pink cast, blush bands, dusty rose
+   for anything you can press, champagne gold hairlines, and a thin high-contrast serif.
+   One memorable thing: the hero, a soft blush wash with a phulkari ornament over the name.
+   Everything after it stays quiet: hairlines, whitespace and the photos carry the colour. */
 :root {
-  --paper: #fbf6f3;      /* page: ivory with a petal-pink cast */
-  --panel: #f4e7e3;      /* alternate bands: blush */
-  --wine: #4a1026;       /* bridal wine: hero, footer, primary buttons */
-  --wine-deep: #2e0817;
-  --ink: #2b1118;        /* text */
-  --ink-soft: #76585f;
-  --rose: #9a2b4e;       /* links and the active state */
-  --gold: #b48f52;       /* old gold hairlines and ornaments */
-  --gold-soft: #e3cc98;  /* gold on wine */
-  --gold-wash: #f6ead1;  /* placeholder highlight */
-  --line: #e9d9d4;
-  --line-strong: #cfb7b0;
-  --grid: #ecdcd7;       /* pattern-paper grid in empty tiles */
+  --paper: #fffbf9;      /* page */
+  --panel: #fbeeea;      /* alternate bands: blush */
+  --blush: #f8e6e2;      /* hero wash */
+  --blush-deep: #f1d2cd;
+  --ink: #3a2a33;        /* text: plum-charcoal */
+  --ink-soft: #7d646d;
+  --rose: #b5607a;       /* dusty rose: buttons, links, ornament */
+  --rose-deep: #9c4d66;
+  --gold: #c4a376;       /* champagne gold hairlines */
+  --gold-wash: #fbefd9;  /* placeholder highlight */
+  --line: #efe1dd;
+  --line-strong: #dcc3bd;
+  --grid: #f1dfda;       /* pattern-paper grid in empty tiles */
   --field: #ffffff;
-  --on-wine: #f8ecec;    /* text on wine */
-  --on-wine-soft: #d9bfc5;
+  --star: #d9a441;
   --wa: #0f7a4a;         /* WhatsApp green, darkened for white text */
   --wa-ink: #ffffff;
   --chalk: var(--gold-wash);
-  --chalk-ink: #4a2e10;
-  --chalk-line: #b48f52;
-  --shadow: 0 10px 28px rgb(74 16 38 / 0.22);
+  --chalk-ink: #5a3f14;
+  --chalk-line: #c4a376;
+  --shadow: 0 10px 28px rgb(120 60 80 / 0.18);
 
-  --display: "Bodoni Moda", "Didot", "Bodoni 72", "Times New Roman", serif;
-  --body: "Jost", "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --display: "Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
+  --body: "Mulish", "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
 
   --step--1: 0.9rem;
   --step-0: 1.0625rem;
   --step-1: 1.25rem;
-  --step-2: clamp(2.1rem, 6vw, 3.1rem);
-  --step-hero: clamp(3rem, 12vw, 7.25rem);
+  --step-2: clamp(2.4rem, 6.5vw, 3.5rem);
+  --step-hero: clamp(3.4rem, 13.5vw, 8rem);
 
   --gutter-l: max(clamp(16px, 5vw, 40px), env(safe-area-inset-left, 0px));
   --gutter-r: max(clamp(16px, 5vw, 40px), env(safe-area-inset-right, 0px));
@@ -42,43 +42,43 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #1a0b11;
-    --panel: #24111a;
-    --wine: #3a0c1f;
-    --wine-deep: #22060f;
-    --ink: #f3e6e6;
-    --ink-soft: #c2a3ab;
-    --rose: #e38aa6;
-    --gold: #c9a265;
-    --gold-soft: #e3cc98;
-    --gold-wash: #4a3717;
-    --line: #3b2129;
-    --line-strong: #5e3a46;
-    --grid: #32191f;
-    --field: #22101a;
-    --chalk-ink: #f3dca6;
-    --chalk-line: #c9a265;
+    --paper: #1b1216;
+    --panel: #251a20;
+    --blush: #2b1c23;
+    --blush-deep: #3a2630;
+    --ink: #f4e9ea;
+    --ink-soft: #b9a3aa;
+    --rose: #e39ab0;
+    --rose-deep: #f0b3c5;
+    --gold: #d2b283;
+    --gold-wash: #3f2f16;
+    --line: #3a2b31;
+    --line-strong: #5c4650;
+    --grid: #33242b;
+    --field: #22181d;
+    --chalk-ink: #f1dca3;
+    --chalk-line: #d2b283;
     --shadow: 0 10px 28px rgb(0 0 0 / 0.5);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #1a0b11;
-  --panel: #24111a;
-  --wine: #3a0c1f;
-  --wine-deep: #22060f;
-  --ink: #f3e6e6;
-  --ink-soft: #c2a3ab;
-  --rose: #e38aa6;
-  --gold: #c9a265;
-  --gold-soft: #e3cc98;
-  --gold-wash: #4a3717;
-  --line: #3b2129;
-  --line-strong: #5e3a46;
-  --grid: #32191f;
-  --field: #22101a;
-  --chalk-ink: #f3dca6;
-  --chalk-line: #c9a265;
+  --paper: #1b1216;
+  --panel: #251a20;
+  --blush: #2b1c23;
+  --blush-deep: #3a2630;
+  --ink: #f4e9ea;
+  --ink-soft: #b9a3aa;
+  --rose: #e39ab0;
+  --rose-deep: #f0b3c5;
+  --gold: #d2b283;
+  --gold-wash: #3f2f16;
+  --line: #3a2b31;
+  --line-strong: #5c4650;
+  --grid: #33242b;
+  --field: #22181d;
+  --chalk-ink: #f1dca3;
+  --chalk-line: #d2b283;
   --shadow: 0 10px 28px rgb(0 0 0 / 0.5);
   color-scheme: dark;
 }
@@ -114,17 +114,16 @@ img { max-width: 100%; height: auto; display: block; }
 
 a { color: var(--rose); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
 
-:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
 
 h1, h2, h3 { margin: 0; text-wrap: balance; }
 h2 {
   font-family: var(--display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: var(--step-2);
-  line-height: 1.08;
-  letter-spacing: -0.005em;
+  line-height: 1.05;
 }
-/* A short gold rule sits under every section title, echoing the hero's frame. */
+/* A short gold rule sits under every section title. */
 .band .wrap > h2::after, .visit h2::after {
   content: "";
   display: block;
@@ -133,7 +132,7 @@ h2 {
   background: var(--gold);
   margin-top: 0.9rem;
 }
-h3 { font-size: var(--step-1); line-height: 1.25; font-weight: 500; }
+h3 { font-size: var(--step-1); line-height: 1.25; font-weight: 600; }
 p { margin: 0; }
 
 .wrap {
@@ -169,51 +168,32 @@ mark.todo {
 .todo-banner mark.todo { background: var(--paper); color: var(--ink); }
 .todo-banner .wrap { display: block; }
 
-/* Hero: a wedding card. Wine field, double gold rule, ornament, the name. */
+/* Hero: a soft blush wash, the ornament, the name. */
 .hero {
-  background: var(--wine);
-  background-image: radial-gradient(120% 90% at 50% 100%, var(--wine-deep) 0%, transparent 60%);
-  color: var(--on-wine);
-  padding: clamp(1rem, 3vw, 2rem) 0;
+  background-color: var(--blush);
+  background-image:
+    radial-gradient(90% 70% at 50% 0%, var(--paper) 0%, transparent 70%),
+    radial-gradient(60% 50% at 85% 100%, var(--blush-deep) 0%, transparent 70%);
+  color: var(--ink);
 }
 .hero__card {
-  position: relative;
-  margin-inline: calc(var(--gutter-l) - 0.25rem) calc(var(--gutter-r) - 0.25rem);
-  padding: clamp(2.75rem, 9vw, 5.5rem) clamp(1.1rem, 5vw, 4rem);
+  padding: clamp(3rem, 10vw, 6rem) var(--gutter-r) clamp(3rem, 9vw, 5.5rem) var(--gutter-l);
   text-align: center;
 }
-.hero__card::before, .hero__card::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  border: 1px solid var(--gold);
-  opacity: 0.9;
-}
-.hero__card::before { inset: 0; }
-.hero__card::after { inset: 0.4rem; opacity: 0.55; }
-@media (min-width: 56rem) {
-  .hero__card { margin-inline: auto; max-width: calc(var(--wide) - var(--gutter-l) - var(--gutter-r)); }
-}
-
 .hero__inner { display: grid; justify-items: center; gap: 1.4rem; max-width: 40rem; margin-inline: auto; }
-.ornament { width: clamp(9rem, 40vw, 14rem); height: auto; color: var(--gold-soft); }
+.ornament { width: clamp(9rem, 40vw, 14rem); height: auto; color: var(--rose); }
 .hero__name {
   font-family: var(--display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: var(--step-hero);
-  line-height: 0.98;
-  letter-spacing: -0.01em;
-  color: #fff;
-  text-shadow: 0 1px 0 rgb(0 0 0 / 0.15);
+  line-height: 0.95;
 }
 .hero__lede {
   font-size: clamp(1.05rem, 3.2vw, 1.25rem);
-  font-weight: 300;
   line-height: 1.6;
   max-width: 34rem;
-  color: var(--on-wine);
+  color: var(--ink);
 }
-.hero__lede mark.todo { background: rgb(255 255 255 / 0.12); color: var(--gold-soft); }
 
 .facts {
   list-style: none;
@@ -222,14 +202,13 @@ mark.todo {
   display: grid;
   justify-items: center;
   gap: 0.4rem;
-  color: var(--on-wine-soft);
+  color: var(--ink-soft);
   font-size: var(--step--1);
 }
 .facts li { display: flex; gap: 0.5rem; align-items: flex-start; text-align: left; }
-.facts .icon { margin-top: 0.2em; color: var(--gold-soft); }
-.facts mark.todo { background: rgb(255 255 255 / 0.12); color: var(--gold-soft); }
+.facts .icon { margin-top: 0.2em; color: var(--rose); }
 
-/* One page-load moment: the card's contents rise into place, nothing else moves on its own. */
+/* One page-load moment: the hero's contents rise into place, nothing else moves on its own. */
 @media (prefers-reduced-motion: no-preference) {
   .hero__inner > * { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
   .hero__inner > :nth-child(2) { animation-delay: 0.08s; }
@@ -252,30 +231,32 @@ mark.todo {
   gap: 0.55rem;
   min-height: 3rem;
   padding: 0.65rem 1.5rem;
-  border-radius: 2px;
+  border-radius: 999px;
   border: 1px solid transparent;
   font: inherit;
-  font-weight: 500;
-  letter-spacing: 0.01em;
+  font-weight: 600;
   line-height: 1.2;
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
-.btn--wa { background: var(--wine); color: var(--on-wine); border-color: var(--wine); }
-.btn--wa:hover { background: var(--wine-deep); border-color: var(--wine-deep); }
+.btn--wa { background: var(--rose); color: #fff; border-color: var(--rose); }
+.btn--wa:hover { background: var(--rose-deep); border-color: var(--rose-deep); }
 .btn--line { border-color: var(--line-strong); color: var(--ink); background: transparent; }
-.btn--line:hover { border-color: var(--gold); background: var(--panel); }
+.btn--line:hover { border-color: var(--rose); color: var(--rose); }
 .btn--todo { border-style: dashed; color: var(--ink-soft); cursor: default; }
-.btn--todo:hover { border-color: var(--line-strong); background: transparent; }
-/* On the wine card the primary button is gold and the secondary a gold hairline. */
-.hero .btn--wa { background: var(--gold-soft); color: var(--wine-deep); border-color: var(--gold-soft); }
-.hero .btn--wa:hover { background: #fff; border-color: #fff; }
-.hero .btn--line { border-color: var(--gold); color: var(--on-wine); }
-.hero .btn--line:hover { background: rgb(255 255 255 / 0.08); border-color: var(--gold-soft); }
-.hero .btn mark.todo { background: transparent; color: inherit; padding: 0; }
+.btn--todo:hover { border-color: var(--line-strong); color: var(--ink-soft); }
 .hero .actions { width: min(100%, 30rem); }
 .hero .btn { flex: 1 1 10rem; white-space: nowrap; }
+.hero .btn--line { border-color: var(--rose); color: var(--rose); }
+.hero .btn--line:hover { background: rgb(255 255 255 / 0.5); }
+.hero .btn mark.todo { background: transparent; color: inherit; padding: 0; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .btn--wa { color: #1b1216; }
+  :root:not([data-theme="light"]) .hero .btn--line:hover { background: rgb(255 255 255 / 0.06); }
+}
+:root[data-theme="dark"] .btn--wa { color: #1b1216; }
+:root[data-theme="dark"] .hero .btn--line:hover { background: rgb(255 255 255 / 0.06); }
 
 /* Jump links, kept in reach while scrolling */
 .jump {
@@ -300,12 +281,12 @@ mark.todo {
   padding: 0.5rem 0.75rem;
   color: var(--ink);
   text-decoration: none;
-  font-weight: 400;
+  font-weight: 500;
   font-size: var(--step--1);
   letter-spacing: 0.02em;
   border-bottom: 1px solid transparent;
 }
-.jump a:hover { border-bottom-color: var(--gold); color: var(--rose); }
+.jump a:hover { border-bottom-color: var(--rose); color: var(--rose); }
 
 /* Sections */
 .band { padding-block: clamp(3.5rem, 10vw, 6.5rem); scroll-margin-top: var(--nav-h); }
@@ -320,9 +301,9 @@ mark.todo {
 .ratecard__group h3 {
   font-family: var(--display);
   font-style: italic;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--rose);
-  font-size: 1.6rem;
+  font-size: 1.85rem;
   margin-bottom: 0.5rem;
 }
 .ratecard__group ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
@@ -336,10 +317,10 @@ mark.todo {
   padding-block: 0.85rem;
   border-bottom: 1px solid var(--line);
 }
-.rate__name { grid-area: name; font-weight: 500; min-width: 0; }
-.rate__leader { grid-area: leader; border-bottom: 1px dotted var(--gold); align-self: end; margin-bottom: 0.5em; opacity: 0.8; }
-.rate__price { grid-area: price; font-family: var(--display); font-size: 1.2em; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.rate__price mark.todo { font-family: var(--body); font-size: 0.85em; }
+.rate__name { grid-area: name; font-weight: 600; min-width: 0; }
+.rate__leader { grid-area: leader; border-bottom: 1px dotted var(--gold); align-self: end; margin-bottom: 0.5em; }
+.rate__price { grid-area: price; font-family: var(--display); font-weight: 500; font-size: 1.35em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rate__price mark.todo { font-family: var(--body); font-weight: 400; font-size: 0.75em; }
 .rate__detail { grid-area: detail; color: var(--ink-soft); font-size: var(--step--1); min-width: 0; }
 .rate__days { grid-area: days; color: var(--ink-soft); font-size: var(--step--1); text-align: right; white-space: nowrap; align-self: start; }
 
@@ -348,8 +329,7 @@ mark.todo {
 .chip {
   font: inherit;
   font-size: var(--step--1);
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  font-weight: 500;
   padding: 0.4rem 1rem;
   min-height: 2.5rem;
   border-radius: 999px;
@@ -359,8 +339,8 @@ mark.todo {
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
-.chip:hover { border-color: var(--gold); }
-.chip[aria-pressed="true"] { background: var(--wine); border-color: var(--wine); color: var(--on-wine); }
+.chip:hover { border-color: var(--rose); color: var(--rose); }
+.chip[aria-pressed="true"] { background: var(--rose); border-color: var(--rose); color: #fff; }
 
 .gallery {
   list-style: none;
@@ -371,21 +351,23 @@ mark.todo {
   gap: 1.25rem 0.9rem;
 }
 .tile figure { margin: 0; }
-/* Each photo sits in a mat: a hairline of gold just inside the edge, like a framed print. */
+/* Each photo sits in a mat: a fine light line just inside the edge, like a framed print. */
 .tile__frame { position: relative; }
 .tile__frame::after {
   content: "";
   position: absolute;
   inset: 0.45rem;
-  border: 1px solid rgb(255 255 255 / 0.55);
+  border: 1px solid rgb(255 255 255 / 0.6);
+  border-radius: 0.45rem;
   pointer-events: none;
 }
+.tile__frame:has(.tile__empty)::after { border-color: var(--gold); opacity: 0.6; }
 .tile img, .tile__empty {
   width: 100%;
   max-width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  border-radius: 2px;
+  border-radius: 0.75rem;
 }
 .tile__empty {
   display: grid;
@@ -400,17 +382,17 @@ mark.todo {
   background-size: 12px 12px;
   background-position: -1px -1px;
 }
-.tile__empty + .tile__frame::after, .tile__frame:has(.tile__empty)::after { border-color: var(--gold); opacity: 0.5; }
 .tile__empty mark.todo { font-size: 0.75rem; }
 .garment { width: 54%; height: auto; }
 .tile figcaption {
   font-family: var(--display);
   font-style: italic;
-  font-size: 1.1rem;
+  font-weight: 500;
+  font-size: 1.25rem;
   line-height: 1.3;
   padding-top: 0.6rem;
 }
-.tile .credit { display: block; font-family: var(--body); font-style: normal; font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.15rem; }
+.tile .credit { display: block; font-family: var(--body); font-style: normal; font-weight: 400; font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.15rem; }
 .tile .credit a { color: inherit; }
 
 /* How it works: four steps in order, numbered in the display face */
@@ -426,18 +408,19 @@ mark.todo {
   left: 0;
   top: -0.35rem;
   font-family: var(--display);
-  font-size: 2.6rem;
+  font-weight: 500;
+  font-size: 2.8rem;
   line-height: 1;
-  color: var(--gold);
+  color: var(--rose);
 }
 .steps li:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 0.55rem;
+  left: 0.6rem;
   top: 2.6rem;
   bottom: 0.6rem;
   border-left: 1px solid var(--gold);
-  opacity: 0.5;
+  opacity: 0.6;
 }
 .steps li:last-child { padding-bottom: 0; }
 .steps h3 { margin-bottom: 0.35rem; }
@@ -445,26 +428,27 @@ mark.todo {
 
 /* Reviews */
 .rating { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.75rem; margin-top: 1.25rem; }
-.rating__score { font-family: var(--display); font-size: 3rem; line-height: 1; }
+.rating__score { font-family: var(--display); font-weight: 500; font-size: 3.2rem; line-height: 1; }
 .rating__stars { display: flex; gap: 0.1rem; color: var(--line-strong); align-self: center; }
 .rating__star .icon { width: 1.25rem; height: 1.25rem; fill: currentColor; stroke: none; }
-.rating__star.is-on { color: var(--gold); }
+.rating__star.is-on { color: var(--star); }
 .reviews { list-style: none; margin: 1.5rem 0 2rem; padding: 0; display: grid; gap: 1.5rem; }
 .review { border-top: 1px solid var(--gold); padding-top: 1.1rem; }
-.review__stars { color: var(--gold); display: flex; gap: 0.15rem; }
+.review__stars { color: var(--star); display: flex; gap: 0.15rem; }
 .review__stars .icon { width: 1rem; height: 1rem; fill: currentColor; stroke: none; }
 .review blockquote {
   margin: 0.6rem 0;
   font-family: var(--display);
   font-style: italic;
-  font-size: 1.45rem;
-  line-height: 1.3;
+  font-weight: 500;
+  font-size: 1.7rem;
+  line-height: 1.25;
   text-wrap: pretty;
 }
 .review__by { color: var(--ink-soft); }
 .reviews-empty {
   border: 1px dashed var(--gold);
-  border-radius: 2px;
+  border-radius: 0.75rem;
   padding: 1.25rem;
   margin: 1.5rem 0 2rem;
   max-width: 40rem;
@@ -481,16 +465,16 @@ mark.todo {
   align-items: center;
   gap: 1rem;
   padding-block: 1.05rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after {
   content: "+";
   flex: none;
   font-family: var(--display);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 1;
-  color: var(--gold);
+  color: var(--rose);
   transition: transform 0.2s ease;
 }
 .faq details[open] summary::after { transform: rotate(45deg); }
@@ -501,7 +485,7 @@ mark.todo {
 .visit { display: grid; gap: 3.5rem; }
 .visit__where, .visit__book { min-width: 0; }
 .visit address { font-style: normal; margin: 1.25rem 0 1.25rem; line-height: 1.65; }
-.visit address strong { font-family: var(--display); font-weight: 400; font-size: 1.3rem; }
+.visit address strong { font-family: var(--display); font-weight: 500; font-size: 1.45rem; }
 .hours { margin: 0 0 1.25rem; max-width: 24rem; border-top: 1px solid var(--line-strong); }
 .hours div {
   display: flex;
@@ -511,27 +495,27 @@ mark.todo {
   border-bottom: 1px solid var(--line);
   font-variant-numeric: tabular-nums;
 }
-.hours dt { font-weight: 500; }
+.hours dt { font-weight: 600; }
 .hours dd { margin: 0; text-align: right; color: var(--ink-soft); }
 .contact-line { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; }
-.contact-line .icon { color: var(--gold); }
-.map { width: 100%; max-width: 100%; aspect-ratio: 4 / 3; border: 0; border-radius: 2px; margin-top: 1.75rem; }
+.contact-line .icon { color: var(--rose); }
+.map { width: 100%; max-width: 100%; aspect-ratio: 4 / 3; border: 0; border-radius: 0.75rem; margin-top: 1.75rem; }
 
 .visit__book .intro { margin-top: 1.1rem; margin-bottom: 1.25rem; }
 .book { display: grid; gap: 0.4rem; max-width: 30rem; }
-.book label { font-weight: 500; margin-top: 0.75rem; }
+.book label { font-weight: 600; margin-top: 0.75rem; }
 .book input, .book select, .book textarea {
   font: inherit;
   width: 100%;
   min-height: 3rem;
-  padding: 0.6rem 0.85rem;
+  padding: 0.6rem 1rem;
   border: 1px solid var(--line-strong);
-  border-radius: 2px;
+  border-radius: 999px;
   background: var(--field);
   color: var(--ink);
 }
-.book textarea { resize: vertical; }
-.book input:focus-visible, .book select:focus-visible, .book textarea:focus-visible { border-color: var(--gold); outline-offset: 0; }
+.book textarea { resize: vertical; border-radius: 1.25rem; }
+.book input:focus-visible, .book select:focus-visible, .book textarea:focus-visible { border-color: var(--rose); outline-offset: 0; }
 .book .btn { margin-top: 1.25rem; justify-self: start; }
 
 .book-result {
@@ -539,30 +523,29 @@ mark.todo {
   max-width: 30rem;
   background: var(--paper);
   border: 1px solid var(--gold);
-  border-radius: 2px;
+  border-radius: 1.25rem;
   padding: 1.25rem;
   display: grid;
   gap: 0.75rem;
 }
-.band--panel .book-result { background: var(--paper); }
-.book-result__label { font-size: var(--step--1); color: var(--ink-soft); font-weight: 500; }
+.book-result__label { font-size: var(--step--1); color: var(--ink-soft); font-weight: 600; }
 .book-result__msg { white-space: pre-wrap; }
 
 /* Footer */
 .foot {
-  background: var(--wine);
-  background-image: radial-gradient(120% 90% at 50% 0%, var(--wine-deep) 0%, transparent 60%);
-  color: var(--on-wine-soft);
+  background: var(--panel);
+  color: var(--ink-soft);
   padding-block: 3rem 6.5rem;
   font-size: var(--step--1);
   text-align: center;
+  border-top: 1px solid var(--line);
 }
 .foot__inner { display: grid; gap: 0.35rem; justify-items: center; }
 .foot .ornament { margin-bottom: 0.6rem; width: 8rem; }
-.foot__name { font-family: var(--display); font-size: 1.8rem; line-height: 1.1; margin-bottom: 0.5rem; color: #fff; }
-.foot a { color: var(--on-wine); display: inline-flex; gap: 0.4rem; align-items: center; text-decoration-color: var(--gold); }
-.foot .muted { color: inherit; opacity: 0.75; margin-top: 0.75rem; }
-.foot mark.todo { background: transparent; color: var(--gold-soft); text-decoration-color: var(--gold-soft); }
+.foot__name { font-family: var(--display); font-weight: 500; font-size: 2rem; line-height: 1.1; margin-bottom: 0.5rem; color: var(--ink); }
+.foot a { color: var(--rose); display: inline-flex; gap: 0.4rem; align-items: center; }
+.foot .muted { color: inherit; opacity: 0.8; margin-top: 0.75rem; }
+.foot mark.todo { background: transparent; color: inherit; text-decoration-color: var(--gold); }
 
 /* Floating WhatsApp button */
 .fab {
@@ -578,7 +561,7 @@ mark.todo {
   border-radius: 999px;
   background: var(--wa);
   color: var(--wa-ink);
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   box-shadow: var(--shadow);
   transition: transform 0.25s ease, opacity 0.25s ease;
@@ -590,11 +573,11 @@ mark.todo {
 /* Shop (switched on later) */
 .products { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 0.9rem; }
 .product { display: grid; gap: 0.35rem; align-content: start; }
-.product h2 { font-family: var(--body); font-size: var(--step-0); font-weight: 500; line-height: 1.3; margin-top: 0.5rem; }
+.product h2 { font-family: var(--body); font-size: var(--step-0); font-weight: 600; line-height: 1.3; margin-top: 0.5rem; }
 .product h2::after { display: none; }
 .product .btn { justify-self: start; min-height: 2.6rem; padding: 0.45rem 1rem; font-size: var(--step--1); }
 .shop-head { padding-block: 1.5rem 0.5rem; }
-.shop-head a { font-family: var(--display); font-size: 1.3rem; text-decoration: none; color: var(--ink); }
+.shop-head a { font-family: var(--display); font-weight: 500; font-size: 1.45rem; text-decoration: none; color: var(--ink); }
 
 @media (min-width: 40rem) {
   .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem 1.1rem; }
