@@ -8,13 +8,13 @@
     { "id": "alterations", "name": "Alterations" }
   ],
   "photos": [
-    { "src": "", "category": "patiala", "icon": "suits", "caption": "Patiala suit", "alt": "" },
-    { "src": "", "category": "anarkali", "icon": "anarkali", "caption": "Floor-length Anarkali", "alt": "" },
-    { "src": "", "category": "sharara", "icon": "sharara", "caption": "Sharara suit", "alt": "" },
-    { "src": "", "category": "straight", "icon": "suits", "caption": "Straight-cut suit", "alt": "" },
-    { "src": "", "category": "palazzo", "icon": "palazzo", "caption": "Palazzo suit", "alt": "" },
-    { "src": "", "category": "sharara", "icon": "sharara", "caption": "Gharara suit", "alt": "" },
-    { "src": "", "category": "anarkali", "icon": "anarkali", "caption": "Party Anarkali", "alt": "" },
-    { "src": "", "category": "alterations", "icon": "alterations", "caption": "Before and after fitting", "alt": "" }
+    { "src": "/photos/patiala-suit.jpg", "category": "patiala", "icon": "suits", "caption": "Patiala suit", "alt": "Woman in a mustard yellow kurti with a matching pleated Patiala salwar and a printed dupatta", "credit": "Pradeep Ranjan", "creditUrl": "https://unsplash.com/photos/woman-standing-on-ground-riX9z1VIwcg" },
+    { "src": "/photos/floor-length-anarkali.jpg", "category": "anarkali", "icon": "anarkali", "caption": "Floor-length Anarkali", "alt": "Woman in an ankle-length powder blue printed Anarkali with a flared skirt and pom-pom trim", "credit": "Ardy Arjun", "creditUrl": "https://unsplash.com/photos/woman-in-blue-and-white-dress-standing-beside-brown-wooden-wall-DFTs4CspXWg" },
+    { "src": "/photos/sharara-suit.jpg", "category": "sharara", "icon": "sharara", "caption": "Sharara suit", "alt": "Woman in a pink short kurti and wide flared sharara with gota borders and a sheer dupatta", "credit": "Dollar Gill", "creditUrl": "https://unsplash.com/photos/woman-in-pink-and-red-sari-standing-on-green-grass-field-during-daytime--xf583XiYHY" },
+    { "src": "/photos/straight-cut-suit.jpg", "category": "straight", "icon": "suits", "caption": "Straight-cut suit", "alt": "Woman in a straight-cut floral print kurta with straight pants and a matching dupatta", "credit": "Naseebo", "creditUrl": "https://unsplash.com/photos/woman-models-a-floral-indian-suit-with-a-dupatta-LQ_ro5OjyEs" },
+    { "src": "/photos/palazzo-suit.jpg", "category": "palazzo", "icon": "palazzo", "caption": "Palazzo suit", "alt": "Woman in a red and cream floral kurta with matching wide-leg palazzo pants", "credit": "IMANA", "creditUrl": "https://unsplash.com/photos/woman-in-floral-outfit-holding-straw-bag-near-plants-ZkPhuIDswMw" },
+    { "src": "/photos/gharara-suit.jpg", "category": "sharara", "icon": "sharara", "caption": "Gharara suit", "alt": "Woman in an embroidered multicolour kurti with a green gharara joined at the knee with gota lace", "credit": "Dollar Gill", "creditUrl": "https://unsplash.com/photos/woman-in-green-and-white-dress-standing-on-gray-concrete-pathway-during-daytime-nDmMJM_DOUs" },
+    { "src": "/photos/party-anarkali.jpg", "category": "anarkali", "icon": "anarkali", "caption": "Party Anarkali", "alt": "Two women in floor-length embroidered party wear, a maroon Anarkali with bell sleeves and a navy gown", "credit": "iKshana Productions", "creditUrl": "https://unsplash.com/photos/two-women-in-ornate-gowns-posing-against-a-muted-background-XmDZKCBFezg" },
+    { "src": "/photos/tailor-at-work.jpg", "category": "alterations", "icon": "alterations", "caption": "Alterations and fitting", "alt": "Tailor stitching red fabric on a treadle sewing machine in his shop", "credit": "Carlos Torres", "creditUrl": "https://unsplash.com/photos/man-using-sewing-machine-lFJJM6hmne4" }
   ]
 }
