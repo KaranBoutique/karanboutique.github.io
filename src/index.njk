@@ -85,9 +85,16 @@ eleventyComputed:
             <li class="rate">
               <span class="rate__name">{{ item.name }}</span>
               <span class="rate__leader" aria-hidden="true"></span>
+              {%- if item.price | isReal %}
               <span class="rate__price">from {% price item.price %}</span>
+              {%- else %}
+              {%- set ask = "Hi Karan Boutique, what is the price and time for " + item.name + "?" %}
+              <a class="rate__price rate__ask" href="{% waUrl business.whatsapp, ask %}" target="_blank" rel="noopener">Ask on WhatsApp</a>
+              {%- endif %}
               <span class="rate__detail">{{ item.detail }}</span>
+              {%- if item.days | isReal %}
               <span class="rate__days">{% days item.days %}</span>
+              {%- endif %}
             </li>
             {%- endfor %}
           </ul>
