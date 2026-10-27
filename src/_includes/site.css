@@ -350,6 +350,8 @@ mark.todo {
 .tile__empty mark.todo { font-size: 0.75rem; }
 .garment { width: 58%; height: auto; }
 .tile figcaption { font-size: var(--step--1); padding-top: 0.4rem; }
+.tile .credit { display: block; font-size: 0.72rem; color: var(--ink-soft); }
+.tile .credit a { color: inherit; }
 
 /* How it works: a real sequence, joined by a running stitch */
 .steps { list-style: none; margin: 0; padding: 0; counter-reset: step; display: grid; }
