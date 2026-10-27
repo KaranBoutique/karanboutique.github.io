@@ -183,6 +183,9 @@ mark.todo {
 }
 .hero__inner { display: grid; justify-items: center; gap: 1.4rem; max-width: 40rem; margin-inline: auto; }
 .emblem { height: clamp(5.5rem, 22vw, 7rem); width: auto; color: var(--rose); }
+/* The lady K monogram takes the place of the first letter; the real K stays in the text for readers and search. */
+.k-initial { height: 0.9em; height: 1.3cap; width: auto; vertical-align: baseline; margin-right: 0.03em; color: var(--rose); }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
 .hero__name {
   font-family: var(--name);
   font-weight: 400;

@@ -60,6 +60,11 @@
 </svg>
 {%- endmacro %}
 
+{# The lady K monogram that stands in for the first letter of the shop name. #}
+{% macro kInitial() -%}
+<svg class="k-initial" viewBox="43 18 118 161" aria-hidden="true" focusable="false"><circle cx="64" cy="30" r="11" fill="currentColor"/><path d="M57,46 Q64,43 71,46 C73,47 74,50 73,54 C71,66 70,78 70,92 C71,120 76,148 84,174 C72,178 56,178 44,174 C52,148 57,120 58,92 C58,78 57,66 55,54 C54,50 55,47 57,46 Z" fill="currentColor"/><path d="M76,98 C98,84 122,60 156,22 C142,54 116,88 82,111 Z" fill="currentColor"/><path d="M85,104 L93,97 C112,124 134,152 160,174 L145,177 C126,152 106,128 85,104 Z" fill="currentColor"/></svg>
+{%- endmacro %}
+
 {# A button that links to another site, or a marked placeholder until the link is added. #}
 {% macro linkbtn(url, label, iconName) -%}
 {%- if url | isReal -%}

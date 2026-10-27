@@ -1,8 +1,8 @@
-{%- from "icons.njk" import icon, emblem -%}
+{%- from "icons.njk" import icon, emblem, kInitial -%}
 <footer class="foot">
   <div class="wrap foot__inner">
     {{ emblem() }}
-    <p class="foot__name">Karan Boutique</p>
+    <p class="foot__name"><span class="sr-only">K</span>{{ kInitial() }}aran Boutique</p>
     <p>{% ph business.streetAddress %}, {% ph business.area %}, {% ph business.city %} {% ph business.pincode %}</p>
     <p>{% ph business.phoneDisplay %}</p>
     {%- if business.instagram | isReal %}
