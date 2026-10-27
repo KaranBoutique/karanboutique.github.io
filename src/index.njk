@@ -5,7 +5,7 @@ eleventyComputed:
   title: "Karan Boutique | Ladies' tailor in {{ business.area }}, {{ business.city }}"
   description: "Patiala, Anarkali, Sharara, Gharara and palazzo suit stitching and alterations in {{ business.area }}, {{ business.city }}. Bring your fabric, see our prices and message us on WhatsApp."
 ---
-{%- from "icons.njk" import garment, icon, linkbtn, emblem, kInitial -%}
+{%- from "icons.njk" import garment, icon, linkbtn -%}
 <p class="todo-banner" id="todo-banner" hidden>
   <span class="wrap">This is a preview. The <mark class="todo">highlighted</mark> details are placeholders until Karan Boutique sends the real ones (<span data-count>0</span> left).</span>
 </p>
@@ -13,8 +13,7 @@ eleventyComputed:
 <header class="hero">
   <div class="hero__card">
     <div class="hero__inner">
-      {{ emblem() }}
-      <h1 class="hero__name"><span class="sr-only">K</span>{{ kInitial() }}aran Boutique</h1>
+      <h1 class="hero__logo"><img src="/karan-boutique-logo.svg" alt="Karan Boutique, Punjabi suits" width="516" height="625"></h1>
       <p class="hero__lede">Punjabi suits stitched to your measurements in {% ph business.area %}, {% ph business.city %}. Patiala, Anarkali, Sharara, Gharara, straight-cut and palazzo suits, and alterations. Bring your fabric and we do the rest.</p>
       <div class="actions actions--center" data-hero-cta>
         <a class="btn btn--wa" href="{% waUrl business.whatsapp, business.whatsappGreeting %}" target="_blank" rel="noopener">{{ icon("chat") }}<span>WhatsApp us</span></a>
