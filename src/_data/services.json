@@ -1,12 +1,12 @@
 {
-  "note": "Prices are for stitching only. You bring the fabric. Lining, piping, latkans and handwork are charged extra.",
+  "note": "Prices are for stitching only. You bring the fabric. Lining, piping, latkans and handwork are extra, and we quote them when we discuss your design.",
   "groups": [
     {
       "name": "Punjabi suits",
       "items": [
-        { "name": "Patiala suit", "detail": "Kameez with a pleated Patiala salwar", "price": null, "days": null },
-        { "name": "Straight-cut suit", "detail": "Straight kameez with pants or churidar", "price": null, "days": null },
-        { "name": "Anarkali suit", "detail": "Flared kameez, knee or floor length", "price": null, "days": null },
+        { "name": "Patiala suit", "detail": "Kameez with a pleated Patiala salwar", "price": 800, "days": 5 },
+        { "name": "Straight-cut suit", "detail": "Straight kameez with pants or churidar", "price": 800, "days": 5 },
+        { "name": "Anarkali suit", "detail": "Flared kameez, knee or floor length", "price": 2500, "days": 7 },
         { "name": "Sharara suit", "detail": "Short kurti with flared sharara", "price": null, "days": null },
         { "name": "Gharara suit", "detail": "Kurti with gathered gharara at the knee", "price": null, "days": null },
         { "name": "Palazzo suit", "detail": "Kurti with wide palazzo pants", "price": null, "days": null }

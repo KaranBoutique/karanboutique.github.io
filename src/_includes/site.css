@@ -326,6 +326,17 @@ mark.todo {
 .rate__leader { grid-area: leader; border-bottom: 1px dotted var(--gold); align-self: end; margin-bottom: 0.5em; }
 .rate__price { grid-area: price; font-family: var(--display); font-weight: 500; font-size: 1.35em; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .rate__price mark.todo { font-family: var(--body); font-weight: 400; font-size: 0.75em; }
+.rate__ask {
+  font-family: var(--body);
+  font-weight: 500;
+  font-size: var(--step--1);
+  color: var(--rose);
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 0.22em;
+  align-self: center;
+}
+.rate__ask:hover { color: var(--rose-deep); text-decoration-color: currentColor; }
 .rate__detail { grid-area: detail; color: var(--ink-soft); font-size: var(--step--1); min-width: 0; }
 .rate__days { grid-area: days; color: var(--ink-soft); font-size: var(--step--1); text-align: right; white-space: nowrap; align-self: start; }
 
