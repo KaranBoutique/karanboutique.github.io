@@ -1,7 +1,7 @@
 {%- from "icons.njk" import icon -%}
 <footer class="foot">
   <div class="wrap foot__inner">
-    <img class="foot__logo" src="/karan-boutique-logo.svg" alt="Karan Boutique" width="516" height="625" loading="lazy" decoding="async">
+    <img class="foot__logo" src="/karan-boutique-logo.svg" eleventy:ignore alt="Karan Boutique" width="516" height="625" loading="lazy" decoding="async">
     <p>{% ph business.streetAddress %}, {% ph business.area %}, {% ph business.city %} {% ph business.pincode %}</p>
     <p>{% ph business.phoneDisplay %}</p>
     {%- if business.instagram | isReal %}

@@ -13,7 +13,8 @@ eleventyComputed:
 <header class="hero">
   <div class="hero__card">
     <div class="hero__inner">
-      <h1 class="hero__logo"><img src="/karan-boutique-logo.svg" alt="Karan Boutique, Punjabi suits" width="516" height="625"></h1>
+      {# The logo is already a small vector file, so eleventy:ignore keeps the photo resizer off it. #}
+      <h1 class="hero__logo"><img src="/karan-boutique-logo.svg" eleventy:ignore alt="Karan Boutique, Punjabi suits" width="516" height="625"></h1>
       <p class="hero__lede">Punjabi suits stitched to your measurements in {% ph business.area %}, {% ph business.city %}. Patiala, Anarkali, Sharara, Gharara, straight-cut and palazzo suits, and alterations. Bring your fabric and we do the rest.</p>
       <div class="actions actions--center" data-hero-cta>
         <a class="btn btn--wa" href="{% waUrl business.whatsapp, business.whatsappGreeting %}" target="_blank" rel="noopener">{{ icon("chat") }}<span>WhatsApp us</span></a>
