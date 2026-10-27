@@ -1,6 +1,7 @@
-{%- from "icons.njk" import icon -%}
+{%- from "icons.njk" import icon, ornament -%}
 <footer class="foot">
   <div class="wrap foot__inner">
+    {{ ornament() }}
     <p class="foot__name">Karan Boutique</p>
     <p>{% ph business.streetAddress %}, {% ph business.area %}, {% ph business.city %} {% ph business.pincode %}</p>
     <p>{% ph business.phoneDisplay %}</p>
