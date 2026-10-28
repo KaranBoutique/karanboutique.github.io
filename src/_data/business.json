@@ -36,5 +36,20 @@
   "reviewsUrl": "https://maps.google.com/?cid=15550115606086664113",
   "writeReviewUrl": "https://g.page/r/CbG_DXXBG83XEBM/review",
   "instagram": "",
-  "facebook": "https://www.facebook.com/people/Karan-Boutique/100063740836445/"
+  "facebook": "https://www.facebook.com/people/Karan-Boutique/100063740836445/",
+
+  "pa": {
+    "name": "ਕਰਨ ਬੁਟੀਕ",
+    "area": "ਨਿਊ ਤਹਿਸੀਲਪੁਰਾ",
+    "city": "ਅੰਮ੍ਰਿਤਸਰ",
+    "state": "ਪੰਜਾਬ",
+    "streetAddress": "ਮਕਾਨ ਨੰ. 36",
+    "landmark": "ਪਾਣੀ ਵਾਲੀ ਟੈਂਕੀ ਦੇ ਨੇੜੇ",
+    "whatsappGreeting": "ਸਤ ਸ੍ਰੀ ਅਕਾਲ ਜੀ, ਮੈਂ ਸੂਟ ਸਿਲਵਾਉਣਾ ਹੈ।",
+    "hours": [
+      { "days": "ਸੋਮਵਾਰ ਤੋਂ ਸ਼ਨਿੱਚਰਵਾਰ", "time": "ਸਵੇਰੇ 9 ਤੋਂ ਸ਼ਾਮ 7 ਵਜੇ" },
+      { "days": "ਐਤਵਾਰ", "time": "ਬੰਦ" }
+    ],
+    "homeService": "ਅਸੀਂ ਘਰ ਆ ਕੇ ਨਾਪ ਨਹੀਂ ਲੈਂਦੇ। ਤੁਹਾਡਾ ਨਾਪ ਇੱਕ ਵਾਰ ਸਾਡੇ ਕੋਲ ਹੋਵੇ, ਤਾਂ ਅਸੀਂ Uber ਪਾਰਸਲ ਰਾਹੀਂ ਤੁਹਾਡਾ ਕੱਪੜਾ ਮੰਗਵਾ ਸਕਦੇ ਹਾਂ ਅਤੇ ਤਿਆਰ ਸੂਟ ਵਾਪਸ ਭੇਜ ਸਕਦੇ ਹਾਂ। ਡਿਲੀਵਰੀ ਦਾ ਖ਼ਰਚਾ ਤੁਸੀਂ ਦੇਣਾ ਹੁੰਦਾ ਹੈ।"
+  }
 }

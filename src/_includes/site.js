@@ -34,6 +34,11 @@
   const msgEl = result.querySelector("[data-msg]");
   const sendEl = result.querySelector("[data-send]");
   const copyEl = result.querySelector("[data-copy]");
+  const copyLabel = copyEl.textContent;
+
+  // The message lines come from the page, in its language, with {name}-style blanks to fill.
+  const t = form.dataset;
+  const fill = (line, values) => line.replace(/\{(\w+)\}/g, (blank, key) => values[key] ?? blank);
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -43,10 +48,11 @@
     const note = String(data.get("note") || "").trim();
     const date = String(data.get("date") || "");
 
-    const lines = [`Hi ${form.dataset.shop}, my name is ${name}.`, `I would like to get this stitched: ${service}.`];
+    const lines = [fill(t.hello, { shop: t.shop, name }), fill(t.want, { service })];
     if (date) {
-      const day = new Date(`${date}T00:00`).toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long" });
-      lines.push(`I would like to visit on ${day}.`);
+      const d = new Date(`${date}T00:00`);
+      const day = `${t.weekdays.split(",")[d.getDay()]}, ${d.getDate()} ${t.months.split(",")[d.getMonth()]}`;
+      lines.push(fill(t.visit, { day }));
     }
     if (note) lines.push(note);
     const text = lines.join("\n");
@@ -54,20 +60,20 @@
     const number = (form.dataset.wa || "").replace(/\D/g, "");
     msgEl.textContent = text;
     sendEl.href = `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
-    copyEl.textContent = "Copy message";
+    copyEl.textContent = copyLabel;
     result.hidden = false;
     sendEl.focus();
   });
 
   copyEl.addEventListener("click", () => {
-    const done = () => { copyEl.textContent = "Copied"; };
+    const done = () => { copyEl.textContent = t.copied; };
     const fallback = () => {
       const range = document.createRange();
       range.selectNodeContents(msgEl);
       const selection = window.getSelection();
       selection.removeAllRanges();
       selection.addRange(range);
-      copyEl.textContent = "Selected, now copy it";
+      copyEl.textContent = t.selected;
     };
     if (navigator.clipboard?.writeText) {
       navigator.clipboard.writeText(msgEl.textContent).then(done, fallback);

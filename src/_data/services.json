@@ -1,23 +1,26 @@
 {
   "note": "Prices are for stitching only. You bring the fabric. Lining, piping, latkans and handwork are extra, and we quote them when we discuss your design.",
+  "pa": { "note": "ਇਹ ਰੇਟ ਸਿਰਫ਼ ਸਿਲਾਈ ਦੇ ਹਨ, ਕੱਪੜਾ ਤੁਸੀਂ ਆਪਣਾ ਲਿਆਉਣਾ ਹੈ। ਅਸਤਰ, ਪਾਈਪਿੰਗ, ਲਟਕਣਾਂ ਅਤੇ ਹੱਥ ਦੇ ਕੰਮ ਦੇ ਪੈਸੇ ਵੱਖਰੇ ਹਨ, ਜੋ ਡਿਜ਼ਾਈਨ ਦੀ ਗੱਲ ਕਰਕੇ ਦੱਸਾਂਗੇ।" },
   "groups": [
     {
       "name": "Punjabi suits",
+      "pa": { "name": "ਪੰਜਾਬੀ ਸੂਟ" },
       "items": [
-        { "name": "Patiala suit", "detail": "Kameez with a pleated Patiala salwar", "price": 800, "days": 5 },
-        { "name": "Straight-cut suit", "detail": "Straight kameez with pants or churidar", "price": 800, "days": 5 },
-        { "name": "Anarkali suit", "detail": "Flared kameez, knee or floor length", "price": 2500, "days": 7 },
-        { "name": "Sharara suit", "detail": "Short kurti with flared sharara", "price": null, "days": null },
-        { "name": "Gharara suit", "detail": "Kurti with gathered gharara at the knee", "price": null, "days": null },
-        { "name": "Palazzo suit", "detail": "Kurti with wide palazzo pants", "price": null, "days": null }
+        { "name": "Patiala suit", "detail": "Kameez with a pleated Patiala salwar", "price": 800, "days": 5, "pa": { "name": "ਪਟਿਆਲਾ ਸੂਟ", "detail": "ਕਮੀਜ਼ ਨਾਲ ਪਲੇਟਾਂ ਵਾਲੀ ਪਟਿਆਲਾ ਸਲਵਾਰ" } },
+        { "name": "Straight-cut suit", "detail": "Straight kameez with pants or churidar", "price": 800, "days": 5, "pa": { "name": "ਸਟ੍ਰੇਟ ਕੱਟ ਸੂਟ", "detail": "ਸਿੱਧੀ ਕਮੀਜ਼ ਨਾਲ ਪੈਂਟ ਜਾਂ ਚੂੜੀਦਾਰ" } },
+        { "name": "Anarkali suit", "detail": "Flared kameez, knee or floor length", "price": 2500, "days": 7, "pa": { "name": "ਅਨਾਰਕਲੀ ਸੂਟ", "detail": "ਘੇਰੇ ਵਾਲੀ ਕਮੀਜ਼, ਗੋਡਿਆਂ ਤੱਕ ਜਾਂ ਪੈਰਾਂ ਤੱਕ" } },
+        { "name": "Sharara suit", "detail": "Short kurti with flared sharara", "price": null, "days": null, "pa": { "name": "ਸ਼ਰਾਰਾ ਸੂਟ", "detail": "ਛੋਟੀ ਕੁੜਤੀ ਨਾਲ ਘੇਰੇਦਾਰ ਸ਼ਰਾਰਾ" } },
+        { "name": "Gharara suit", "detail": "Kurti with gathered gharara at the knee", "price": null, "days": null, "pa": { "name": "ਗਰਾਰਾ ਸੂਟ", "detail": "ਕੁੜਤੀ ਨਾਲ ਗੋਡਿਆਂ ਤੋਂ ਚੁੰਨਟਾਂ ਵਾਲਾ ਗਰਾਰਾ" } },
+        { "name": "Palazzo suit", "detail": "Kurti with wide palazzo pants", "price": null, "days": null, "pa": { "name": "ਪਲਾਜ਼ੋ ਸੂਟ", "detail": "ਕੁੜਤੀ ਨਾਲ ਖੁੱਲ੍ਹਾ ਪਲਾਜ਼ੋ" } }
       ]
     },
     {
       "name": "Alterations",
+      "pa": { "name": "ਫਿਟਿੰਗ ਅਤੇ ਮੁਰੰਮਤ" },
       "items": [
-        { "name": "Fitting", "detail": "Take in or let out", "price": null, "days": null },
-        { "name": "Length change", "detail": "Kameez, salwar or sleeves", "price": null, "days": null },
-        { "name": "Zip, hooks or buttons", "detail": "Replace or repair", "price": null, "days": null }
+        { "name": "Fitting", "detail": "Take in or let out", "price": null, "days": null, "pa": { "name": "ਫਿਟਿੰਗ", "detail": "ਸੂਟ ਤੰਗ ਜਾਂ ਖੁੱਲ੍ਹਾ ਕਰਨਾ" } },
+        { "name": "Length change", "detail": "Kameez, salwar or sleeves", "price": null, "days": null, "pa": { "name": "ਲੰਬਾਈ ਬਦਲਣੀ", "detail": "ਕਮੀਜ਼, ਸਲਵਾਰ ਜਾਂ ਬਾਹਾਂ" } },
+        { "name": "Zip, hooks or buttons", "detail": "Replace or repair", "price": null, "days": null, "pa": { "name": "ਜ਼ਿੱਪ, ਹੁੱਕ ਜਾਂ ਬਟਨ", "detail": "ਬਦਲਣੇ ਜਾਂ ਠੀਕ ਕਰਨੇ" } }
       ]
     }
   ]

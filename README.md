@@ -31,6 +31,14 @@ Placeholders are written in square brackets, like `"[City]"`, or left as `null` 
 - **Hours for Google**: once known, fill `schemaHours`, for example `["Mo-Sa 10:00-20:00"]`.
 - **Map**: paste the Google Maps share link into `mapsUrl`, and the "Embed a map" link into `mapEmbedUrl`.
 
+## Punjabi version
+
+The home page is built twice: in English at `/` and in Punjabi (Gurmukhi) at `/pa/`, with an English | ਪੰਜਾਬੀ switch at the top of the page and in the footer. The two languages are listed in `src/_data/languages.json`.
+
+- **Page text** lives in `src/index.njk` and `src/_includes/footer.njk`, with each piece written in both languages, English first: `{{ "Prices" if en else "ਰੇਟ" }}`, or an `{% if en %} … {% else %} … {% endif %}` block for longer text. When you change the English, change the Punjabi next to it.
+- **Data** (`business.json`, `services.json`, `gallery.json`) keeps its Punjabi in a `"pa"` block on each record, for example `{ "name": "Patiala suit", "pa": { "name": "ਪਟਿਆਲਾ ਸੂਟ" } }`. On the Punjabi page the `inLang` filter puts those words in place of the English ones. A field with no Punjabi yet shows in English, so when you add a service, a photo, or fill in a detail such as `payment`, add its Punjabi too.
+- The Punjabi page loads two Gurmukhi fonts (Tiro Gurmukhi for headings, Mukta Mahee for text) next to Cormorant Garamond and Mulish.
+
 ## Add photos
 
 Put photos in `src/photos/` and point to them from `gallery.json`, for example `"src": "/photos/red-bridal-lehenga.jpg"`. Photos straight from a phone are fine: the build resizes them and makes small AVIF and WebP copies so the page stays fast on mobile data.
