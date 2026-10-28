@@ -6,10 +6,6 @@ eleventyComputed:
   description: "Patiala, Anarkali, Sharara, Gharara and palazzo suit stitching and alterations in {{ business.area }}, {{ business.city }}. Bring your fabric, see our prices and message us on WhatsApp."
 ---
 {%- from "icons.njk" import garment, icon, linkbtn -%}
-<p class="todo-banner" id="todo-banner" hidden>
-  <span class="wrap">This is a preview. The <mark class="todo">highlighted</mark> details are placeholders until Karan Boutique sends the real ones (<span data-count>0</span> left).</span>
-</p>
-
 <header class="hero">
   <div class="hero__card">
     <div class="hero__inner">
@@ -161,15 +157,20 @@ eleventyComputed:
   <section class="band" id="questions" aria-labelledby="questions-title">
     <div class="wrap">
       <h2 id="questions-title">Questions</h2>
+      {#- A question whose answer the shop has not sent yet stays off the page until it has one. #}
       <div class="faq">
+        {%- if business.usualDays | isReal and business.bridalWeeks | isReal %}
         <details>
           <summary>How long does stitching take?</summary>
           <p>Most suits are ready in about {% ph business.usualDays %} days. Wedding and heavy work orders need {% ph business.bridalWeeks %} weeks, so book early in the wedding season.</p>
         </details>
+        {%- endif %}
+        {%- if business.urgentOrders | isReal %}
         <details>
           <summary>Can you stitch an urgent order?</summary>
           <p>{% ph business.urgentOrders %}</p>
         </details>
+        {%- endif %}
         <details>
           <summary>What should I bring?</summary>
           <p>Your fabric, any lining, lace or trims you have chosen, and a photo of the design you like. If you have an outfit that fits you well, bring it so we can match the fit.</p>
@@ -182,14 +183,18 @@ eleventyComputed:
           <summary>Do you come for measurement or pickup?</summary>
           <p>{% ph business.homeService %}</p>
         </details>
+        {%- if business.otherOutfits | isReal %}
         <details>
           <summary>Do you stitch blouses, lehengas or kids' clothes?</summary>
           <p>{% ph business.otherOutfits %}</p>
         </details>
+        {%- endif %}
+        {%- if business.payment | isReal %}
         <details>
           <summary>How can I pay?</summary>
           <p>{% ph business.payment %}</p>
         </details>
+        {%- endif %}
         <details>
           <summary>Do you sell ready-made clothes?</summary>
           <p>Not yet. Ready-made outfits are coming soon. Follow us on Instagram to see them first.</p>

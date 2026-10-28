@@ -1,12 +1,4 @@
 (() => {
-  // Until every placeholder is filled in, say so at the top of the page.
-  const banner = document.getElementById("todo-banner");
-  const todos = document.querySelectorAll("main mark.todo, header mark.todo, footer mark.todo").length;
-  if (banner && todos) {
-    banner.querySelector("[data-count]").textContent = todos;
-    banner.hidden = false;
-  }
-
   // Gallery: show one type of work at a time.
   const chips = document.querySelectorAll("[data-filter]");
   const tiles = document.querySelectorAll(".gallery [data-cat]");
