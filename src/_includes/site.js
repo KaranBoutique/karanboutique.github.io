@@ -7,7 +7,8 @@
       const cat = chip.dataset.filter;
       chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
       tiles.forEach((tile) => {
-        tile.hidden = cat !== "all" && tile.dataset.cat !== cat;
+        // "All" shows one or two photos per style; a style shows all of its photos.
+        tile.hidden = cat === "all" ? tile.hasAttribute("data-more") : tile.dataset.cat !== cat;
       });
     });
   });

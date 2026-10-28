@@ -59,9 +59,9 @@ eleventyComputed:
     <div class="wrap">
       <h2 id="work-title">{{ "Styles we stitch" if en else "ਅਸੀਂ ਇਹ ਸਟਾਈਲ ਸਿਲਦੇ ਹਾਂ" }}</h2>
       {%- if en %}
-      <p class="intro">Example photos of the styles we make. Show us any of these, or a photo of your own, and we will stitch it in your fabric to your measurements. Photos of our own work are coming soon.</p>
+      <p class="intro">Example photos of the styles we make. Show us any of these, or a photo of your own, and we will stitch it in your fabric to your measurements. Tap a style to see more photos. Photos of our own work are coming soon.</p>
       {%- else %}
-      <p class="intro">ਇਹ ਸਾਡੇ ਬਣਾਏ ਜਾਂਦੇ ਸਟਾਈਲਾਂ ਦੀਆਂ ਨਮੂਨੇ ਵਾਲੀਆਂ ਫੋਟੋਆਂ ਹਨ। ਇਹਨਾਂ ਵਿੱਚੋਂ ਕੋਈ ਵੀ, ਜਾਂ ਆਪਣੀ ਕੋਈ ਫੋਟੋ ਦਿਖਾਓ, ਅਸੀਂ ਤੁਹਾਡੇ ਕੱਪੜੇ ਵਿੱਚ ਤੁਹਾਡੇ ਨਾਪ ਨਾਲ ਸਿਲ ਦਿਆਂਗੇ। ਸਾਡੇ ਆਪਣੇ ਕੰਮ ਦੀਆਂ ਫੋਟੋਆਂ ਜਲਦੀ ਆ ਰਹੀਆਂ ਹਨ।</p>
+      <p class="intro">ਇਹ ਸਾਡੇ ਬਣਾਏ ਜਾਂਦੇ ਸਟਾਈਲਾਂ ਦੀਆਂ ਨਮੂਨੇ ਵਾਲੀਆਂ ਫੋਟੋਆਂ ਹਨ। ਇਹਨਾਂ ਵਿੱਚੋਂ ਕੋਈ ਵੀ, ਜਾਂ ਆਪਣੀ ਕੋਈ ਫੋਟੋ ਦਿਖਾਓ, ਅਸੀਂ ਤੁਹਾਡੇ ਕੱਪੜੇ ਵਿੱਚ ਤੁਹਾਡੇ ਨਾਪ ਨਾਲ ਸਿਲ ਦਿਆਂਗੇ। ਹੋਰ ਫੋਟੋਆਂ ਵੇਖਣ ਲਈ ਕੋਈ ਸਟਾਈਲ ਚੁਣੋ। ਸਾਡੇ ਆਪਣੇ ਕੰਮ ਦੀਆਂ ਫੋਟੋਆਂ ਜਲਦੀ ਆ ਰਹੀਆਂ ਹਨ।</p>
       {%- endif %}
       <div class="chips" role="group" aria-label="{{ "Show styles by type" if en else "ਕਿਸਮ ਮੁਤਾਬਕ ਸਟਾਈਲ ਵੇਖੋ" }}">
         <button type="button" class="chip" data-filter="all" aria-pressed="true">{{ "All" if en else "ਸਾਰੇ" }}</button>
@@ -71,7 +71,7 @@ eleventyComputed:
       </div>
       <ul class="gallery">
         {%- for photo in gallery.photos | inLang(lang) %}
-        <li class="tile" data-cat="{{ photo.category }}">
+        <li class="tile" data-cat="{{ photo.category }}"{% if not photo.featured %} data-more hidden{% endif %}>
           <figure>
             <div class="tile__frame">
             {%- if photo.src %}
