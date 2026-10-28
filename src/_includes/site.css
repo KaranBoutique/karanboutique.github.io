@@ -25,8 +25,9 @@
   --chalk-line: #c4a376;
   --shadow: 0 10px 28px rgb(120 60 80 / 0.18);
 
-  --display: "Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
-  --body: "Mulish", "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+  /* Tiro Gurmukhi and Mukta Mahee only load on the Punjabi page, where they draw the Gurmukhi letters. */
+  --display: "Cormorant Garamond", "Cormorant", "Tiro Gurmukhi", Garamond, "Times New Roman", serif;
+  --body: "Mulish", "Mukta Mahee", "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
 
   --step--1: 0.9rem;
   --step-0: 1.0625rem;
@@ -165,8 +166,9 @@ mark.todo {
     radial-gradient(60% 50% at 85% 100%, var(--blush-deep) 0%, transparent 70%);
   color: var(--ink);
 }
+.hero__top { display: flex; justify-content: flex-end; max-width: var(--wide); margin-inline: auto; padding: 0.9rem var(--gutter-r) 0 var(--gutter-l); }
 .hero__card {
-  padding: clamp(3rem, 10vw, 6rem) var(--gutter-r) clamp(3rem, 9vw, 5.5rem) var(--gutter-l);
+  padding: clamp(1.5rem, 6vw, 4rem) var(--gutter-r) clamp(3rem, 9vw, 5.5rem) var(--gutter-l);
   text-align: center;
 }
 .hero__inner { display: grid; justify-items: center; gap: 1.4rem; max-width: 40rem; margin-inline: auto; }
@@ -541,6 +543,39 @@ mark.todo {
 .foot a { color: var(--rose); display: inline-flex; gap: 0.4rem; align-items: center; }
 .foot .muted { color: inherit; opacity: 0.8; margin-top: 0.75rem; }
 .foot mark.todo { background: transparent; color: inherit; text-decoration-color: var(--gold); }
+
+/* Language switch: English | ਪੰਜਾਬੀ, at the top of the hero and in the footer */
+.langs {
+  display: inline-flex;
+  gap: 0.15rem;
+  padding: 0.2rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--paper);
+}
+.langs a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.2rem 1rem;
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: var(--step--1);
+  font-weight: 600;
+  text-decoration: none;
+}
+.langs a:hover { color: var(--rose); }
+.langs a[aria-current] { background: var(--rose); color: var(--paper); }
+.foot .langs { margin-block: 0.75rem 0.25rem; }
+
+/* Punjabi page: Gurmukhi needs room above and below each line for its vowel signs,
+   no letter-spacing (it would break the line along the top of the letters), and upright type. */
+:lang(pa) h2 { font-size: clamp(2rem, 5.6vw, 2.9rem); line-height: 1.3; }
+:lang(pa) h3 { line-height: 1.45; }
+:lang(pa) .jump a { letter-spacing: 0; }
+:lang(pa) .ratecard__group h3 { font-style: normal; font-size: 1.6rem; }
+:lang(pa) .tile figcaption { font-style: normal; font-size: 1.1rem; line-height: 1.45; }
+:lang(pa) .hero__lede, :lang(pa) .intro, :lang(pa) .steps p, :lang(pa) .faq p, :lang(pa) .aside, :lang(pa) .fineprint { line-height: 1.8; }
 
 /* Floating WhatsApp button */
 .fab {

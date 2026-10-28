@@ -1,4 +1,6 @@
-{%- set fonts = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@400;500;600&display=swap" -%}
+{%- set L = languages[lang or "en"] -%}
+{#- The Punjabi page also loads Gurmukhi faces that sit beside Cormorant and Mulish. -#}
+{%- set fonts = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mulish:wght@400;500;600" + ("&family=Mukta+Mahee:wght@400;500;600&family=Tiro+Gurmukhi" if lang == "pa" else "") + "&display=swap" -%}
 {%- if env.preview -%}
 <title>Karan Boutique Website</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -8,13 +10,15 @@
 <style>
 {% include "site.css" %}
 </style>
+<div lang="{{ L.htmlLang }}">
 {{ content | safe }}
+</div>
 <script>
 {% include "site.js" %}
 </script>
 {%- else -%}
 <!doctype html>
-<html lang="{{ site.lang }}">
+<html lang="{{ L.htmlLang }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +28,14 @@
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 {%- endif %}
+{%- if lang %}
+{%- for code, l in languages %}
+<link rel="alternate" hreflang="{{ l.htmlLang }}" href="{{ site.url }}{{ l.url }}">
+{%- endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ languages.en.url }}">
+{%- endif %}
 <meta property="og:type" content="website">
+<meta property="og:locale" content="{{ L.htmlLang | replace("-", "_") }}">
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description }}">
 {%- if site.url | isReal %}

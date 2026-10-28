@@ -1,0 +1,6 @@
+{#- English | ਪੰਜਾਬੀ: links between the two versions of the home page. #}
+<nav class="langs" aria-label="Language / ਭਾਸ਼ਾ">
+  {%- for code, l in languages %}
+  <a href="{{ l.url }}" lang="{{ l.htmlLang }}" hreflang="{{ l.htmlLang }}"{% if code == (lang or "en") %} aria-current="true"{% endif %}>{{ l.name }}</a>
+  {%- endfor %}
+</nav>

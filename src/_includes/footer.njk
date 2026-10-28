@@ -1,7 +1,8 @@
 {%- from "icons.njk" import icon -%}
+{%- set en = lang != "pa" %}
 <footer class="foot">
   <div class="wrap foot__inner">
-    <img class="foot__logo" src="/karan-boutique-logo.svg" eleventy:ignore alt="Karan Boutique" width="516" height="625" loading="lazy" decoding="async">
+    <img class="foot__logo" src="/karan-boutique-logo.svg" eleventy:ignore alt="{{ "Karan Boutique" if en else "ਕਰਨ ਬੁਟੀਕ" }}" width="516" height="625" loading="lazy" decoding="async">
     <p>{% ph business.streetAddress %}, {% ph business.area %}, {% ph business.city %} {% ph business.pincode %}</p>
     <p>{% ph business.phoneDisplay %}</p>
     {%- if business.instagram | isReal %}
@@ -10,8 +11,9 @@
     {%- if business.facebook | isReal %}
     <p><a href="{{ business.facebook }}" target="_blank" rel="noopener">{{ icon("facebook") }}<span>Facebook</span></a></p>
     {%- endif %}
+    {% include "langs.njk" %}
     <p class="muted">© {{ env.year }} Karan Boutique</p>
   </div>
 </footer>
 
-<a class="fab" href="{% waUrl business.whatsapp, business.whatsappGreeting %}" target="_blank" rel="noopener" aria-label="Chat with Karan Boutique on WhatsApp">{{ icon("chat") }}<span>WhatsApp</span></a>
+<a class="fab" href="{% waUrl business.whatsapp, business.whatsappGreeting %}" target="_blank" rel="noopener" aria-label="{{ "Chat with Karan Boutique on WhatsApp" if en else "ਕਰਨ ਬੁਟੀਕ ਨਾਲ ਵਟਸਐਪ 'ਤੇ ਗੱਲ ਕਰੋ" }}">{{ icon("chat") }}<span>{{ "WhatsApp" if en else "ਵਟਸਐਪ" }}</span></a>

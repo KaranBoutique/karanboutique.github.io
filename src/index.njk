@@ -1,20 +1,36 @@
 ---
 layout: base.njk
 schema: true
+# The home page is built twice: in English at / and in Punjabi at /pa/ (see src/_data/languages.json).
+pagination:
+  data: languages
+  size: 1
+  alias: lang
+permalink: "{{ languages[lang].url }}"
 eleventyComputed:
-  title: "Karan Boutique | Ladies' tailor in {{ business.area }}, {{ business.city }}"
-  description: "Patiala, Anarkali, Sharara, Gharara and palazzo suit stitching and alterations in {{ business.area }}, {{ business.city }}. Bring your fabric, see our prices and message us on WhatsApp."
+  title: "{% if lang == 'pa' %}{{ business.pa.name }} | ਲੇਡੀਜ਼ ਸੂਟਾਂ ਦੀ ਸਿਲਾਈ, {{ business.pa.area }}, {{ business.pa.city }}{% else %}Karan Boutique | Ladies' tailor in {{ business.area }}, {{ business.city }}{% endif %}"
+  description: "{% if lang == 'pa' %}{{ business.pa.area }}, {{ business.pa.city }} ਵਿੱਚ ਪਟਿਆਲਾ, ਅਨਾਰਕਲੀ, ਸ਼ਰਾਰਾ, ਗਰਾਰਾ ਅਤੇ ਪਲਾਜ਼ੋ ਸੂਟਾਂ ਦੀ ਸਿਲਾਈ, ਫਿਟਿੰਗ ਅਤੇ ਮੁਰੰਮਤ। ਆਪਣਾ ਕੱਪੜਾ ਲਿਆਓ, ਸਾਡੇ ਰੇਟ ਵੇਖੋ ਅਤੇ ਵਟਸਐਪ 'ਤੇ ਮੈਸੇਜ ਕਰੋ।{% else %}Patiala, Anarkali, Sharara, Gharara and palazzo suit stitching and alterations in {{ business.area }}, {{ business.city }}. Bring your fabric, see our prices and message us on WhatsApp.{% endif %}"
 ---
 {%- from "icons.njk" import garment, icon, linkbtn -%}
+{#- Every piece of text is written in both languages, English first: {{ "English" if en else "ਪੰਜਾਬੀ" }}.
+    Data files keep their Punjabi words in a "pa" block, which inLang swaps in on the Punjabi page. #}
+{%- set en = lang != "pa" %}
+{%- set business = business | inLang(lang) %}
+{%- set services = services | inLang(lang) %}
 <header class="hero">
+  <div class="hero__top">{% include "langs.njk" %}</div>
   <div class="hero__card">
     <div class="hero__inner">
       {# The logo is already a small vector file, so eleventy:ignore keeps the photo resizer off it. #}
-      <h1 class="hero__logo"><img src="/karan-boutique-logo.svg" eleventy:ignore alt="Karan Boutique, Punjabi suits" width="516" height="625"></h1>
+      <h1 class="hero__logo"><img src="/karan-boutique-logo.svg" eleventy:ignore alt="{{ "Karan Boutique, Punjabi suits" if en else "ਕਰਨ ਬੁਟੀਕ, ਪੰਜਾਬੀ ਸੂਟ" }}" width="516" height="625"></h1>
+      {%- if en %}
       <p class="hero__lede">Punjabi suits stitched to your measurements in {% ph business.area %}, {% ph business.city %}. Patiala, Anarkali, Sharara, Gharara, straight-cut and palazzo suits, and alterations. Bring your fabric and we do the rest.</p>
+      {%- else %}
+      <p class="hero__lede">{% ph business.area %}, {% ph business.city %} ਵਿੱਚ ਤੁਹਾਡੇ ਨਾਪ ਮੁਤਾਬਕ ਪੰਜਾਬੀ ਸੂਟਾਂ ਦੀ ਸਿਲਾਈ। ਪਟਿਆਲਾ, ਅਨਾਰਕਲੀ, ਸ਼ਰਾਰਾ, ਗਰਾਰਾ, ਸਟ੍ਰੇਟ ਕੱਟ ਅਤੇ ਪਲਾਜ਼ੋ ਸੂਟ, ਨਾਲੇ ਫਿਟਿੰਗ ਅਤੇ ਮੁਰੰਮਤ ਵੀ। ਤੁਸੀਂ ਬੱਸ ਕੱਪੜਾ ਲਿਆਓ, ਬਾਕੀ ਕੰਮ ਸਾਡਾ।</p>
+      {%- endif %}
       <div class="actions actions--center" data-hero-cta>
-        <a class="btn btn--wa" href="{% waUrl business.whatsapp, business.whatsappGreeting %}" target="_blank" rel="noopener">{{ icon("chat") }}<span>WhatsApp us</span></a>
-        <a class="btn btn--line" href="{% telUrl business.phone %}">{{ icon("phone") }}<span>Call {% ph business.phoneDisplay %}</span></a>
+        <a class="btn btn--wa" href="{% waUrl business.whatsapp, business.whatsappGreeting %}" target="_blank" rel="noopener">{{ icon("chat") }}<span>{{ "WhatsApp us" if en else "ਵਟਸਐਪ ਕਰੋ" }}</span></a>
+        <a class="btn btn--line" href="{% telUrl business.phone %}">{{ icon("phone") }}<span>{{ "Call" if en else "ਫ਼ੋਨ ਕਰੋ" }} {% ph business.phoneDisplay %}</span></a>
       </div>
       <ul class="facts">
         <li>{{ icon("pin") }}<span>{% ph business.streetAddress %}, {% ph business.area %}</span></li>
@@ -24,16 +40,16 @@ eleventyComputed:
   </div>
 </header>
 
-<nav class="jump" aria-label="On this page">
+<nav class="jump" aria-label="{{ "On this page" if en else "ਇਸ ਪੰਨੇ 'ਤੇ" }}">
   <div class="wrap jump__inner">
-    <a href="#work">Styles</a>
-    <a href="#prices">Prices</a>
-    <a href="#how">How it works</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#questions">Questions</a>
-    <a href="#visit">Visit us</a>
+    <a href="#work">{{ "Styles" if en else "ਸਟਾਈਲ" }}</a>
+    <a href="#prices">{{ "Prices" if en else "ਰੇਟ" }}</a>
+    <a href="#how">{{ "How it works" if en else "ਕੰਮ ਦਾ ਤਰੀਕਾ" }}</a>
+    <a href="#reviews">{{ "Reviews" if en else "ਰਿਵਿਊ" }}</a>
+    <a href="#questions">{{ "Questions" if en else "ਸਵਾਲ" }}</a>
+    <a href="#visit">{{ "Visit us" if en else "ਸਾਡਾ ਪਤਾ" }}</a>
     {%- if shop.enabled %}
-    <a href="/shop/">Shop</a>
+    <a href="/shop/">{{ "Shop" if en else "ਦੁਕਾਨ" }}</a>
     {%- endif %}
   </div>
 </nav>
@@ -41,26 +57,30 @@ eleventyComputed:
 <main>
   <section class="band" id="work" aria-labelledby="work-title">
     <div class="wrap">
-      <h2 id="work-title">Styles we stitch</h2>
+      <h2 id="work-title">{{ "Styles we stitch" if en else "ਅਸੀਂ ਇਹ ਸਟਾਈਲ ਸਿਲਦੇ ਹਾਂ" }}</h2>
+      {%- if en %}
       <p class="intro">Example photos of the styles we make. Show us any of these, or a photo of your own, and we will stitch it in your fabric to your measurements. Photos of our own work are coming soon.</p>
-      <div class="chips" role="group" aria-label="Show styles by type">
-        <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
-        {%- for cat in gallery.categories %}
+      {%- else %}
+      <p class="intro">ਇਹ ਸਾਡੇ ਬਣਾਏ ਜਾਂਦੇ ਸਟਾਈਲਾਂ ਦੀਆਂ ਨਮੂਨੇ ਵਾਲੀਆਂ ਫੋਟੋਆਂ ਹਨ। ਇਹਨਾਂ ਵਿੱਚੋਂ ਕੋਈ ਵੀ, ਜਾਂ ਆਪਣੀ ਕੋਈ ਫੋਟੋ ਦਿਖਾਓ, ਅਸੀਂ ਤੁਹਾਡੇ ਕੱਪੜੇ ਵਿੱਚ ਤੁਹਾਡੇ ਨਾਪ ਨਾਲ ਸਿਲ ਦਿਆਂਗੇ। ਸਾਡੇ ਆਪਣੇ ਕੰਮ ਦੀਆਂ ਫੋਟੋਆਂ ਜਲਦੀ ਆ ਰਹੀਆਂ ਹਨ।</p>
+      {%- endif %}
+      <div class="chips" role="group" aria-label="{{ "Show styles by type" if en else "ਕਿਸਮ ਮੁਤਾਬਕ ਸਟਾਈਲ ਵੇਖੋ" }}">
+        <button type="button" class="chip" data-filter="all" aria-pressed="true">{{ "All" if en else "ਸਾਰੇ" }}</button>
+        {%- for cat in gallery.categories | inLang(lang) %}
         <button type="button" class="chip" data-filter="{{ cat.id }}" aria-pressed="false">{{ cat.name }}</button>
         {%- endfor %}
       </div>
       <ul class="gallery">
-        {%- for photo in gallery.photos %}
+        {%- for photo in gallery.photos | inLang(lang) %}
         <li class="tile" data-cat="{{ photo.category }}">
           <figure>
             <div class="tile__frame">
             {%- if photo.src %}
             <img src="{{ photo.src }}" alt="{{ photo.alt or photo.caption }}" sizes="(min-width: 64rem) 16rem, (min-width: 40rem) 33vw, 50vw">
             {%- else %}
-            <div class="tile__empty">{{ garment(photo.icon or photo.category) }}<mark class="todo">Photo needed</mark></div>
+            <div class="tile__empty">{{ garment(photo.icon or photo.category) }}<mark class="todo">{{ "Photo needed" if en else "ਫੋਟੋ ਚਾਹੀਦੀ ਹੈ" }}</mark></div>
             {%- endif %}
             </div>
-            <figcaption>{{ photo.caption }}{% if photo.credit %}<small class="credit">Example photo: {% if photo.creditUrl %}<a href="{{ photo.creditUrl }}" target="_blank" rel="noopener">{{ photo.credit }}</a>{% else %}{{ photo.credit }}{% endif %}, Unsplash</small>{% endif %}</figcaption>
+            <figcaption>{{ photo.caption }}{% if photo.credit %}<small class="credit">{{ "Example photo" if en else "ਨਮੂਨਾ ਫੋਟੋ" }}: {% if photo.creditUrl %}<a href="{{ photo.creditUrl }}" target="_blank" rel="noopener">{{ photo.credit }}</a>{% else %}{{ photo.credit }}{% endif %}, Unsplash</small>{% endif %}</figcaption>
           </figure>
         </li>
         {%- endfor %}
@@ -70,26 +90,26 @@ eleventyComputed:
 
   <section class="band band--panel" id="prices" aria-labelledby="prices-title">
     <div class="wrap">
-      <h2 id="prices-title">Stitching prices</h2>
-      <p class="intro">Starting prices. We confirm the final price when we see your fabric and design.</p>
+      <h2 id="prices-title">{{ "Stitching prices" if en else "ਸਿਲਾਈ ਦੇ ਰੇਟ" }}</h2>
+      <p class="intro">{{ "Starting prices. We confirm the final price when we see your fabric and design." if en else "ਇਹ ਸ਼ੁਰੂਆਤੀ ਰੇਟ ਹਨ। ਪੱਕਾ ਰੇਟ ਤੁਹਾਡਾ ਕੱਪੜਾ ਅਤੇ ਡਿਜ਼ਾਈਨ ਵੇਖ ਕੇ ਦੱਸਾਂਗੇ।" }}</p>
       <div class="ratecard">
-        {%- for group in services.groups %}
+        {%- for group in services.groups | inLang(lang) %}
         <div class="ratecard__group">
           <h3>{{ group.name }}</h3>
           <ul>
-            {%- for item in group.items %}
+            {%- for item in group.items | inLang(lang) %}
             <li class="rate">
               <span class="rate__name">{{ item.name }}</span>
               <span class="rate__leader" aria-hidden="true"></span>
               {%- if item.price | isReal %}
-              <span class="rate__price">from {% price item.price %}</span>
+              <span class="rate__price">{% if en %}from {% price item.price %}{% else %}{% price item.price %} ਤੋਂ{% endif %}</span>
               {%- else %}
-              {%- set ask = "Hi Karan Boutique, what is the price and time for " + item.name + "?" %}
-              <a class="rate__price rate__ask" href="{% waUrl business.whatsapp, ask %}" target="_blank" rel="noopener">Ask on WhatsApp</a>
+              {%- set ask = ("Hi Karan Boutique, what is the price and time for " + item.name + "?") if en else ("ਸਤ ਸ੍ਰੀ ਅਕਾਲ ਜੀ, " + item.name + " ਦਾ ਰੇਟ ਕੀ ਹੈ ਅਤੇ ਕਿੰਨੇ ਦਿਨ ਲੱਗਣਗੇ?") %}
+              <a class="rate__price rate__ask" href="{% waUrl business.whatsapp, ask %}" target="_blank" rel="noopener">{{ "Ask on WhatsApp" if en else "ਵਟਸਐਪ 'ਤੇ ਪੁੱਛੋ" }}</a>
               {%- endif %}
               <span class="rate__detail">{{ item.detail }}</span>
               {%- if item.days | isReal %}
-              <span class="rate__days">{% days item.days %}</span>
+              <span class="rate__days">{% if en %}{% days item.days %}{% else %}{{ item.days }} {{ "ਦਿਨ" if item.days == 1 else "ਦਿਨਾਂ" }} ਵਿੱਚ ਤਿਆਰ{% endif %}</span>
               {%- endif %}
             </li>
             {%- endfor %}
@@ -103,8 +123,9 @@ eleventyComputed:
 
   <section class="band" id="how" aria-labelledby="how-title">
     <div class="wrap">
-      <h2 id="how-title">How it works</h2>
+      <h2 id="how-title">{{ "How it works" if en else "ਕੰਮ ਦਾ ਤਰੀਕਾ" }}</h2>
       <ol class="steps">
+        {%- if en %}
         <li>
           <h3>Bring your fabric</h3>
           <p>Bring the fabric and any lace or trims you have chosen. A photo of the design, or an outfit that fits you well, helps us get it right.</p>
@@ -121,6 +142,24 @@ eleventyComputed:
           <h3>Collect</h3>
           <p>We message you on WhatsApp when it is ready to collect on the agreed date.</p>
         </li>
+        {%- else %}
+        <li>
+          <h3>ਆਪਣਾ ਕੱਪੜਾ ਲਿਆਓ</h3>
+          <p>ਕੱਪੜਾ ਅਤੇ ਆਪਣੀ ਪਸੰਦ ਦੀ ਲੇਸ ਜਾਂ ਗੋਟਾ ਨਾਲ ਲਿਆਓ। ਡਿਜ਼ਾਈਨ ਦੀ ਫੋਟੋ, ਜਾਂ ਕੋਈ ਸੂਟ ਜਿਸਦੀ ਫਿਟਿੰਗ ਤੁਹਾਨੂੰ ਵਧੀਆ ਆਉਂਦੀ ਹੈ, ਨਾਲ ਲਿਆਉਣ ਨਾਲ ਸਾਨੂੰ ਸਹੀ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ ਮਿਲਦੀ ਹੈ।</p>
+        </li>
+        <li>
+          <h3>ਨਾਪ ਅਤੇ ਡਿਜ਼ਾਈਨ</h3>
+          <p>ਅਸੀਂ ਤੁਹਾਡਾ ਨਾਪ ਲੈਂਦੇ ਹਾਂ ਅਤੇ ਤੁਹਾਡੇ ਨਾਲ ਡਿਜ਼ਾਈਨ, ਰੇਟ ਅਤੇ ਤਿਆਰ ਹੋਣ ਦੀ ਤਾਰੀਖ਼ ਪੱਕੀ ਕਰਦੇ ਹਾਂ। ਤੁਹਾਡਾ ਨਾਪ ਅਗਲੀ ਵਾਰ ਲਈ ਸਾਡੇ ਕੋਲ ਲਿਖਿਆ ਰਹਿੰਦਾ ਹੈ।</p>
+        </li>
+        <li>
+          <h3>ਟਰਾਇਲ</h3>
+          <p>ਸੂਟ ਪਾ ਕੇ ਵੇਖੋ। ਜਦੋਂ ਤੱਕ ਫਿਟਿੰਗ ਬਿਲਕੁਲ ਠੀਕ ਨਾ ਬੈਠੇ, ਅਸੀਂ ਠੀਕ ਕਰਦੇ ਰਹਾਂਗੇ।</p>
+        </li>
+        <li>
+          <h3>ਸੂਟ ਲੈ ਜਾਓ</h3>
+          <p>ਮਿੱਥੀ ਤਾਰੀਖ਼ ਨੂੰ ਸੂਟ ਤਿਆਰ ਹੋਣ 'ਤੇ ਅਸੀਂ ਤੁਹਾਨੂੰ ਵਟਸਐਪ 'ਤੇ ਮੈਸੇਜ ਕਰ ਦਿਆਂਗੇ।</p>
+        </li>
+        {%- endif %}
       </ol>
       <p class="aside">{% ph business.homeService %}</p>
     </div>
@@ -128,15 +167,15 @@ eleventyComputed:
 
   <section class="band band--panel" id="reviews" aria-labelledby="reviews-title">
     <div class="wrap">
-      <h2 id="reviews-title">What customers say</h2>
+      <h2 id="reviews-title">{{ "What customers say" if en else "ਗਾਹਕ ਕੀ ਕਹਿੰਦੇ ਹਨ" }}</h2>
       {%- if business.googleRating %}
-      <p class="rating"><span class="rating__score">{{ business.googleRating }}</span><span class="rating__stars" aria-hidden="true">{% for s in range(0, 5) %}<span class="rating__star{% if loop.index0 < business.googleRating | round(0, "floor") %} is-on{% endif %}">{{ icon("star") }}</span>{% endfor %}</span><span class="muted">out of 5 from {{ business.googleReviewCount }} Google reviews</span></p>
+      <p class="rating"><span class="rating__score">{{ business.googleRating }}</span><span class="rating__stars" aria-hidden="true">{% for s in range(0, 5) %}<span class="rating__star{% if loop.index0 < business.googleRating | round(0, "floor") %} is-on{% endif %}">{{ icon("star") }}</span>{% endfor %}</span><span class="muted">{% if en %}out of 5 from {{ business.googleReviewCount }} Google reviews{% else %}5 ਵਿੱਚੋਂ, Google ਦੇ {{ business.googleReviewCount }} ਰਿਵਿਊ{% endif %}</span></p>
       {%- endif %}
       {%- if reviews.length %}
       <ul class="reviews">
         {%- for review in reviews %}
         <li class="review">
-          <p class="review__stars" aria-label="{{ review.stars }} out of 5 stars">{% for s in range(0, review.stars) %}{{ icon("star") }}{% endfor %}</p>
+          <p class="review__stars" aria-label="{% if en %}{{ review.stars }} out of 5 stars{% else %}5 ਵਿੱਚੋਂ {{ review.stars }} ਸਟਾਰ{% endif %}">{% for s in range(0, review.stars) %}{{ icon("star") }}{% endfor %}</p>
           <blockquote>{{ review.text }}</blockquote>
           <p class="review__by">{{ review.name }}</p>
         </li>
@@ -144,60 +183,64 @@ eleventyComputed:
       </ul>
       {%- else %}
       <div class="reviews-empty">
-        <p><mark class="todo">Your three best Google reviews go here, with each customer's first name.</mark></p>
+        <p><mark class="todo">{{ "Your three best Google reviews go here, with each customer's first name." if en else "ਇੱਥੇ Google ਦੇ ਤਿੰਨ ਸਭ ਤੋਂ ਵਧੀਆ ਰਿਵਿਊ ਆਉਣਗੇ, ਗਾਹਕ ਦੇ ਨਾਮ ਨਾਲ।" }}</mark></p>
       </div>
       {%- endif %}
       <div class="actions">
-        {{ linkbtn(business.reviewsUrl, "Read our reviews on Google") }}
-        {{ linkbtn(business.writeReviewUrl, "Write a review", "star") }}
+        {{ linkbtn(business.reviewsUrl, "Read our reviews on Google" if en else "Google 'ਤੇ ਸਾਡੇ ਰਿਵਿਊ ਪੜ੍ਹੋ") }}
+        {{ linkbtn(business.writeReviewUrl, "Write a review" if en else "ਰਿਵਿਊ ਲਿਖੋ", "star") }}
       </div>
     </div>
   </section>
 
   <section class="band" id="questions" aria-labelledby="questions-title">
     <div class="wrap">
-      <h2 id="questions-title">Questions</h2>
+      <h2 id="questions-title">{{ "Questions" if en else "ਆਮ ਸਵਾਲ" }}</h2>
       {#- A question whose answer the shop has not sent yet stays off the page until it has one. #}
       <div class="faq">
         {%- if business.usualDays | isReal and business.bridalWeeks | isReal %}
         <details>
-          <summary>How long does stitching take?</summary>
+          <summary>{{ "How long does stitching take?" if en else "ਸਿਲਾਈ ਵਿੱਚ ਕਿੰਨੇ ਦਿਨ ਲੱਗਦੇ ਹਨ?" }}</summary>
+          {%- if en %}
           <p>Most suits are ready in about {% ph business.usualDays %} days. Wedding and heavy work orders need {% ph business.bridalWeeks %} weeks, so book early in the wedding season.</p>
+          {%- else %}
+          <p>ਜ਼ਿਆਦਾਤਰ ਸੂਟ ਲਗਭਗ {% ph business.usualDays %} ਦਿਨਾਂ ਵਿੱਚ ਤਿਆਰ ਹੋ ਜਾਂਦੇ ਹਨ। ਵਿਆਹ ਵਾਲੇ ਅਤੇ ਭਾਰੀ ਕੰਮ ਵਾਲੇ ਸੂਟਾਂ ਨੂੰ {% ph business.bridalWeeks %} ਹਫ਼ਤੇ ਲੱਗਦੇ ਹਨ, ਇਸ ਲਈ ਵਿਆਹਾਂ ਦੇ ਸੀਜ਼ਨ ਵਿੱਚ ਪਹਿਲਾਂ ਹੀ ਬੁੱਕ ਕਰਵਾ ਲਓ।</p>
+          {%- endif %}
         </details>
         {%- endif %}
         {%- if business.urgentOrders | isReal %}
         <details>
-          <summary>Can you stitch an urgent order?</summary>
+          <summary>{{ "Can you stitch an urgent order?" if en else "ਕੀ ਤੁਸੀਂ ਜਲਦੀ ਵਾਲਾ ਆਰਡਰ ਸਿਲ ਦਿੰਦੇ ਹੋ?" }}</summary>
           <p>{% ph business.urgentOrders %}</p>
         </details>
         {%- endif %}
         <details>
-          <summary>What should I bring?</summary>
-          <p>Your fabric, any lining, lace or trims you have chosen, and a photo of the design you like. If you have an outfit that fits you well, bring it so we can match the fit.</p>
+          <summary>{{ "What should I bring?" if en else "ਮੈਂ ਨਾਲ ਕੀ ਲਿਆਵਾਂ?" }}</summary>
+          <p>{{ "Your fabric, any lining, lace or trims you have chosen, and a photo of the design you like. If you have an outfit that fits you well, bring it so we can match the fit." if en else "ਆਪਣਾ ਕੱਪੜਾ, ਅਸਤਰ, ਪਸੰਦ ਦੀ ਲੇਸ ਜਾਂ ਗੋਟਾ, ਅਤੇ ਜਿਹੜਾ ਡਿਜ਼ਾਈਨ ਪਸੰਦ ਹੈ ਉਸਦੀ ਫੋਟੋ। ਜੇ ਤੁਹਾਡੇ ਕੋਲ ਕੋਈ ਸੂਟ ਹੈ ਜਿਸਦੀ ਫਿਟਿੰਗ ਵਧੀਆ ਹੈ, ਤਾਂ ਉਹ ਵੀ ਲੈ ਆਓ, ਤਾਂ ਜੋ ਅਸੀਂ ਉਸੇ ਤਰ੍ਹਾਂ ਦੀ ਫਿਟਿੰਗ ਕਰ ਸਕੀਏ।" }}</p>
         </details>
         <details>
-          <summary>Can you copy a design from a photo?</summary>
-          <p>Yes. Show us the photo when you visit, or send it to us on WhatsApp first and we will tell you the price.</p>
+          <summary>{{ "Can you copy a design from a photo?" if en else "ਕੀ ਤੁਸੀਂ ਫੋਟੋ ਵੇਖ ਕੇ ਡਿਜ਼ਾਈਨ ਬਣਾ ਦਿੰਦੇ ਹੋ?" }}</summary>
+          <p>{{ "Yes. Show us the photo when you visit, or send it to us on WhatsApp first and we will tell you the price." if en else "ਹਾਂ ਜੀ। ਆਉਣ ਵੇਲੇ ਫੋਟੋ ਦਿਖਾ ਦਿਓ, ਜਾਂ ਪਹਿਲਾਂ ਵਟਸਐਪ 'ਤੇ ਭੇਜ ਦਿਓ, ਅਸੀਂ ਰੇਟ ਦੱਸ ਦਿਆਂਗੇ।" }}</p>
         </details>
         <details>
-          <summary>Do you come for measurement or pickup?</summary>
+          <summary>{{ "Do you come for measurement or pickup?" if en else "ਕੀ ਤੁਸੀਂ ਘਰ ਆ ਕੇ ਨਾਪ ਲੈਂਦੇ ਹੋ ਜਾਂ ਕੱਪੜਾ ਲੈ ਜਾਂਦੇ ਹੋ?" }}</summary>
           <p>{% ph business.homeService %}</p>
         </details>
         {%- if business.otherOutfits | isReal %}
         <details>
-          <summary>Do you stitch blouses, lehengas or kids' clothes?</summary>
+          <summary>{{ "Do you stitch blouses, lehengas or kids' clothes?" if en else "ਕੀ ਤੁਸੀਂ ਬਲਾਊਜ਼, ਲਹਿੰਗੇ ਜਾਂ ਬੱਚਿਆਂ ਦੇ ਕੱਪੜੇ ਵੀ ਸਿਲਦੇ ਹੋ?" }}</summary>
           <p>{% ph business.otherOutfits %}</p>
         </details>
         {%- endif %}
         {%- if business.payment | isReal %}
         <details>
-          <summary>How can I pay?</summary>
+          <summary>{{ "How can I pay?" if en else "ਪੈਸੇ ਕਿਵੇਂ ਦੇ ਸਕਦੇ ਹਾਂ?" }}</summary>
           <p>{% ph business.payment %}</p>
         </details>
         {%- endif %}
         <details>
-          <summary>Do you sell ready-made clothes?</summary>
-          <p>Not yet. Ready-made outfits are coming soon. Follow us on Instagram to see them first.</p>
+          <summary>{{ "Do you sell ready-made clothes?" if en else "ਕੀ ਤੁਸੀਂ ਰੈਡੀਮੇਡ ਕੱਪੜੇ ਵੀ ਵੇਚਦੇ ਹੋ?" }}</summary>
+          <p>{{ "Not yet. Ready-made outfits are coming soon. Follow us on Instagram to see them first." if en else "ਹਾਲੇ ਨਹੀਂ। ਰੈਡੀਮੇਡ ਸੂਟ ਜਲਦੀ ਆ ਰਹੇ ਹਨ। ਸਭ ਤੋਂ ਪਹਿਲਾਂ ਵੇਖਣ ਲਈ ਸਾਨੂੰ Instagram 'ਤੇ ਫ਼ਾਲੋ ਕਰੋ।" }}</p>
         </details>
       </div>
     </div>
@@ -206,9 +249,9 @@ eleventyComputed:
   <section class="band band--panel" id="visit" aria-labelledby="visit-title">
     <div class="wrap visit">
       <div class="visit__where">
-        <h2 id="visit-title">Visit us</h2>
+        <h2 id="visit-title">{{ "Visit us" if en else "ਸਾਡਾ ਪਤਾ" }}</h2>
         <address>
-          <strong>Karan Boutique</strong><br>
+          <strong>{{ business.name }}</strong><br>
           {% ph business.streetAddress %}<br>
           {% ph business.area %}, {% ph business.city %}, {% ph business.state %} {% ph business.pincode %}<br>
           <span class="muted">{% ph business.landmark %}</span>
@@ -220,47 +263,57 @@ eleventyComputed:
         </dl>
         <p class="contact-line">{{ icon("phone") }}<span>{% ph business.phoneDisplay %}</span></p>
         <div class="actions">
-          {{ linkbtn(business.mapsUrl, "Get directions", "pin") }}
-          <a class="btn btn--line" href="{% telUrl business.phone %}">{{ icon("phone") }}<span>Call</span></a>
+          {{ linkbtn(business.mapsUrl, "Get directions" if en else "ਰਸਤਾ ਵੇਖੋ", "pin") }}
+          <a class="btn btn--line" href="{% telUrl business.phone %}">{{ icon("phone") }}<span>{{ "Call" if en else "ਫ਼ੋਨ ਕਰੋ" }}</span></a>
           {%- if business.facebook | isReal %}
           {{ linkbtn(business.facebook, "Facebook", "facebook") }}
           {%- endif %}
         </div>
         {%- if business.mapEmbedUrl | isReal and not env.preview %}
-        <iframe class="map" src="{{ business.mapEmbedUrl }}" title="Map to Karan Boutique" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe class="map" src="{{ business.mapEmbedUrl }}" title="{{ "Map to Karan Boutique" if en else "ਕਰਨ ਬੁਟੀਕ ਦਾ ਨਕਸ਼ਾ" }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         {%- endif %}
       </div>
 
       <div class="visit__book">
-        <h2 id="book-title">Book a visit</h2>
-        <p class="intro">Fill this in and we will open WhatsApp with your message ready to send.</p>
-        <form class="book" id="book" data-wa="{{ business.whatsapp }}" data-shop="{{ business.name }}" aria-labelledby="book-title">
-          <label for="book-name">Your name</label>
+        <h2 id="book-title">{{ "Book a visit" if en else "ਆਉਣ ਦਾ ਸਮਾਂ ਬੁੱਕ ਕਰੋ" }}</h2>
+        <p class="intro">{{ "Fill this in and we will open WhatsApp with your message ready to send." if en else "ਇਹ ਫ਼ਾਰਮ ਭਰੋ, ਅਸੀਂ ਤੁਹਾਡਾ ਮੈਸੇਜ ਲਿਖ ਕੇ ਵਟਸਐਪ ਖੋਲ੍ਹ ਦਿਆਂਗੇ, ਤੁਸੀਂ ਬੱਸ ਭੇਜਣਾ ਹੈ।" }}</p>
+        {#- The script fills these message lines in: {shop}, {name}, {service} and {day} are replaced with the answers.
+            Day and month names come from here too, as not every phone knows them in Punjabi. #}
+        <form class="book" id="book" data-wa="{{ business.whatsapp }}" data-shop="{{ business.name }}"
+          data-hello="{{ "Hi {shop}, my name is {name}." if en else "ਸਤ ਸ੍ਰੀ ਅਕਾਲ ਜੀ, ਮੇਰਾ ਨਾਮ {name} ਹੈ।" }}"
+          data-want="{{ "I would like to get this stitched: {service}." if en else "ਮੈਂ ਇਹ ਸਿਲਵਾਉਣਾ ਹੈ: {service}।" }}"
+          data-visit="{{ "I would like to visit on {day}." if en else "ਮੈਂ {day} ਨੂੰ ਆਉਣਾ ਹੈ।" }}"
+          data-weekdays="{{ "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday" if en else "ਐਤਵਾਰ,ਸੋਮਵਾਰ,ਮੰਗਲਵਾਰ,ਬੁੱਧਵਾਰ,ਵੀਰਵਾਰ,ਸ਼ੁੱਕਰਵਾਰ,ਸ਼ਨਿੱਚਰਵਾਰ" }}"
+          data-months="{{ "January,February,March,April,May,June,July,August,September,October,November,December" if en else "ਜਨਵਰੀ,ਫ਼ਰਵਰੀ,ਮਾਰਚ,ਅਪ੍ਰੈਲ,ਮਈ,ਜੂਨ,ਜੁਲਾਈ,ਅਗਸਤ,ਸਤੰਬਰ,ਅਕਤੂਬਰ,ਨਵੰਬਰ,ਦਸੰਬਰ" }}"
+          data-copied="{{ "Copied" if en else "ਕਾਪੀ ਹੋ ਗਿਆ" }}"
+          data-selected="{{ "Selected, now copy it" if en else "ਚੁਣ ਲਿਆ, ਹੁਣ ਕਾਪੀ ਕਰੋ" }}"
+          aria-labelledby="book-title">
+          <label for="book-name">{{ "Your name" if en else "ਤੁਹਾਡਾ ਨਾਮ" }}</label>
           <input id="book-name" name="name" type="text" autocomplete="name" required>
-          <label for="book-service">What do you want stitched?</label>
+          <label for="book-service">{{ "What do you want stitched?" if en else "ਕੀ ਸਿਲਵਾਉਣਾ ਹੈ?" }}</label>
           <select id="book-service" name="service" required>
-            <option value="">Choose one</option>
-            {%- for group in services.groups %}
+            <option value="">{{ "Choose one" if en else "ਇੱਕ ਚੁਣੋ" }}</option>
+            {%- for group in services.groups | inLang(lang) %}
             <optgroup label="{{ group.name }}">
-              {%- for item in group.items %}
+              {%- for item in group.items | inLang(lang) %}
               <option>{{ item.name }}</option>
               {%- endfor %}
             </optgroup>
             {%- endfor %}
-            <option>Something else</option>
+            <option>{{ "Something else" if en else "ਕੁਝ ਹੋਰ" }}</option>
           </select>
-          <label for="book-date">Day you want to visit <span class="muted">(optional)</span></label>
+          <label for="book-date">{{ "Day you want to visit" if en else "ਤੁਸੀਂ ਕਿਸ ਦਿਨ ਆਉਣਾ ਹੈ" }} <span class="muted">{{ "(optional)" if en else "(ਜ਼ਰੂਰੀ ਨਹੀਂ)" }}</span></label>
           <input id="book-date" name="date" type="date">
-          <label for="book-note">Anything else <span class="muted">(optional)</span></label>
-          <textarea id="book-note" name="note" rows="3" placeholder="For example: wedding on 12 December, need it a week before"></textarea>
-          <button class="btn btn--wa" type="submit">{{ icon("chat") }}<span>Write my WhatsApp message</span></button>
+          <label for="book-note">{{ "Anything else" if en else "ਹੋਰ ਕੋਈ ਗੱਲ" }} <span class="muted">{{ "(optional)" if en else "(ਜ਼ਰੂਰੀ ਨਹੀਂ)" }}</span></label>
+          <textarea id="book-note" name="note" rows="3" placeholder="{{ "For example: wedding on 12 December, need it a week before" if en else "ਜਿਵੇਂ: 12 ਦਸੰਬਰ ਨੂੰ ਵਿਆਹ ਹੈ, ਇੱਕ ਹਫ਼ਤਾ ਪਹਿਲਾਂ ਚਾਹੀਦਾ ਹੈ" }}"></textarea>
+          <button class="btn btn--wa" type="submit">{{ icon("chat") }}<span>{{ "Write my WhatsApp message" if en else "ਮੇਰਾ ਵਟਸਐਪ ਮੈਸੇਜ ਲਿਖੋ" }}</span></button>
         </form>
         <div class="book-result" id="book-result" hidden>
-          <p class="book-result__label">Your message</p>
+          <p class="book-result__label">{{ "Your message" if en else "ਤੁਹਾਡਾ ਮੈਸੇਜ" }}</p>
           <p class="book-result__msg" data-msg></p>
           <div class="actions">
-            <a class="btn btn--wa" data-send href="#" target="_blank" rel="noopener">{{ icon("chat") }}<span>Send on WhatsApp</span></a>
-            <button class="btn btn--line" type="button" data-copy>Copy message</button>
+            <a class="btn btn--wa" data-send href="#" target="_blank" rel="noopener">{{ icon("chat") }}<span>{{ "Send on WhatsApp" if en else "ਵਟਸਐਪ 'ਤੇ ਭੇਜੋ" }}</span></a>
+            <button class="btn btn--line" type="button" data-copy>{{ "Copy message" if en else "ਮੈਸੇਜ ਕਾਪੀ ਕਰੋ" }}</button>
           </div>
         </div>
       </div>

@@ -11,6 +11,14 @@ const escapeHtml = (value) =>
 
 const todo = (text) => `<mark class="todo">${escapeHtml(text)}</mark>`;
 
+// A record's "pa" block holds its Punjabi words. On the Punjabi page they take
+// the place of the English ones; anything not translated yet stays in English.
+const inLang = (value, lang) => {
+  if (Array.isArray(value)) return value.map((item) => inLang(item, lang));
+  if (value && typeof value === "object" && value[lang]) return { ...value, ...value[lang] };
+  return value;
+};
+
 // PREVIEW=artifact builds a single self-contained page for the claude.ai preview.
 const preview = process.env.PREVIEW === "artifact";
 
@@ -74,6 +82,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addGlobalData("env", { preview, year: new Date().getFullYear() });
 
   eleventyConfig.addFilter("isReal", isReal);
+  eleventyConfig.addFilter("inLang", inLang);
 
   // {% ph business.city, "City" %} prints the value, or a highlighted
   // placeholder when it has not been filled in.
