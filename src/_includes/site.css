@@ -1,6 +1,6 @@
 /* Look: "Petal". Light and airy: ivory with a petal-pink cast, blush bands, dusty rose
    for anything you can press, champagne gold hairlines, and a thin high-contrast serif.
-   One memorable thing: the hero, a soft blush wash with the lady emblem over the name, set in Italiana.
+   One memorable thing: the hero, a soft blush wash under the magenta and black lady logo.
    Everything after it stays quiet: hairlines, whitespace and the photos carry the colour. */
 :root {
   --paper: #fffbf9;      /* page */
@@ -9,7 +9,7 @@
   --blush-deep: #f1d2cd;
   --ink: #3a2a33;        /* text: plum-charcoal */
   --ink-soft: #7d646d;
-  --rose: #b5607a;       /* dusty rose: buttons, links, emblem */
+  --rose: #b5607a;       /* dusty rose: buttons, links, icons */
   --rose-deep: #9c4d66;
   --gold: #c4a376;       /* champagne gold hairlines */
   --gold-wash: #fbefd9;  /* placeholder highlight */
@@ -26,14 +26,12 @@
   --shadow: 0 10px 28px rgb(120 60 80 / 0.18);
 
   --display: "Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
-  --name: "Italiana", "Cormorant Garamond", Garamond, "Times New Roman", serif;
   --body: "Mulish", "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
 
   --step--1: 0.9rem;
   --step-0: 1.0625rem;
   --step-1: 1.25rem;
   --step-2: clamp(2.4rem, 6.5vw, 3.5rem);
-  --step-hero: clamp(3.4rem, 13.5vw, 8rem);
 
   --gutter-l: max(clamp(16px, 5vw, 40px), env(safe-area-inset-left, 0px));
   --gutter-r: max(clamp(16px, 5vw, 40px), env(safe-area-inset-right, 0px));
@@ -169,7 +167,7 @@ mark.todo {
 .todo-banner mark.todo { background: var(--paper); color: var(--ink); }
 .todo-banner .wrap { display: block; }
 
-/* Hero: a soft blush wash, the emblem, the name. */
+/* Hero: a soft blush wash and the logo. */
 .hero {
   background-color: var(--blush);
   background-image:
@@ -182,17 +180,9 @@ mark.todo {
   text-align: center;
 }
 .hero__inner { display: grid; justify-items: center; gap: 1.4rem; max-width: 40rem; margin-inline: auto; }
-.emblem { height: clamp(5.5rem, 22vw, 7rem); width: auto; color: var(--rose); }
-/* The lady K monogram takes the place of the first letter; the real K stays in the text for readers and search. */
-.k-initial { height: 0.9em; height: 1.3cap; width: auto; vertical-align: baseline; margin-right: 0.03em; color: var(--rose); }
-.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
-.hero__name {
-  font-family: var(--name);
-  font-weight: 400;
-  font-size: var(--step-hero);
-  line-height: 0.95;
-  letter-spacing: 0.02em;
-}
+/* The logo carries the shop name; its alt text is the heading for readers and search. */
+.hero__logo { margin: 0; line-height: 0; }
+.hero__logo img { width: clamp(15rem, 68vw, 20rem); height: auto; }
 .hero__lede {
   font-size: clamp(1.05rem, 3.2vw, 1.25rem);
   line-height: 1.6;
@@ -557,8 +547,7 @@ mark.todo {
   border-top: 1px solid var(--line);
 }
 .foot__inner { display: grid; gap: 0.35rem; justify-items: center; }
-.foot .emblem { margin-bottom: 0.6rem; height: 3.5rem; }
-.foot__name { font-family: var(--name); font-weight: 400; letter-spacing: 0.02em; font-size: 2rem; line-height: 1.1; margin-bottom: 0.5rem; color: var(--ink); }
+.foot__logo { width: 10rem; height: auto; margin-bottom: 0.75rem; }
 .foot a { color: var(--rose); display: inline-flex; gap: 0.4rem; align-items: center; }
 .foot .muted { color: inherit; opacity: 0.8; margin-top: 0.75rem; }
 .foot mark.todo { background: transparent; color: inherit; text-decoration-color: var(--gold); }
